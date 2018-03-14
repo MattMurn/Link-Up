@@ -10,6 +10,11 @@ module.exports = function(sequelize, DataTypes){
             }
         },
     });
+    Group.associate = function(models){
+        Group.hasMany(models.Contact, {
+            
+        })
+    };
     return Group;
 };
 

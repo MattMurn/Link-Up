@@ -17,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/MattMurn/RightfulPenguins/issues"
   },
-  "homepage": "https://github.com/MattMurn/RightfulPenguins#readme"
+  "homepage": "https://github.com/MattMurn/RightfulPenguins#readme",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "express-handlebars": "*",
+    "mysql": "*",
+    "mysql2": "*",
+    "sequelize": "*"
+  }
 }
