@@ -18,7 +18,10 @@ module.exports = function(sequelize, DataTypes){
                 len: [1]
             }
         },
-        // createdAt is a default that will give us time/date
+        createdAt : {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.NOW
+        },
         age: {
 
             type: DataTypes.INTEGER, 
