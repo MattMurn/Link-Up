@@ -1,0 +1,33 @@
+{{!-- Header asking for a particular type of informtion --}}
+<div class="container">
+    <row>
+        <div class="col-offset-md-12">Trait/Question Here</div>
+    </row>
+</div>
+
+
+{{!-- Section to populate with either buttons for either:
+    1. Selecting the most applicable trait 
+                        OR
+    2. Entering a description per the prompt --}}
+ 
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <input type="checkbox" aria-label="...">
+      </span>
+      <input type="text" class="form-control" aria-label="...">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" aria-label="...">
+      </span>
+      <input type="text" class="form-control" aria-label="...">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+{{!-- Skip button to avoid entering this particular data --}}
