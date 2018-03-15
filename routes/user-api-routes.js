@@ -24,8 +24,7 @@ module.exports = function(app) {
         db.User.findOne({
             where: {
                 id: req.params.id
-            },
-            include: [db.Contact]
+            }
         }).then(function(dbUser){
             res.json(dbUser);
         });
