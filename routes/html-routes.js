@@ -23,11 +23,12 @@ module.exports = function(app) {
     //      To display the correct template the question object must be used with handlebars
     //      
     app.get("/addnew", function(req, res) {
+      
       var question = {
-        radio: false,
+        radio: true,
         oneClick: false,
-        userEntry: true,
-        options: ["one", "two", "three"]
+        userEntry: false,
+        options: ["serious", "friendly", "quiet", "bold"]
       }
       var questionObject = {
         question: question

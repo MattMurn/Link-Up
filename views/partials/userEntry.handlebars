@@ -1,11 +1,12 @@
-{{!-- create a container for each button --}}
+{{!-- create a container for each field --}}
+{{#each question.options}}
     {{!-- form-input-field class is solely for styling purposes --}}
-<div>Here is entry stuff</div>
-<div class="col-md-4 form-input-field">
-    <form>
-        <div class="form-group">
-            <label for=""></label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder={{question.options}}>
-        </div>
-    </form>
-</div>
+    <div class="col-md-12 form-input-field">
+        <form>
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder={{this.options}}>
+            </div>
+        </form>
+    </div>
+{{/each}}

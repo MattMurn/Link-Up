@@ -1,0 +1,10 @@
+{{!-- create a container for each button --}}
+{{#each question.options}}
+    {{!-- form-input-button class is solely for styling purposes --}}
+    {{!-- "option-index" is used to relate the clicked button back to the option in the question object. The @index handlebar helper is used to enter the index of the loop for this purpose --}}
+    <div class="col-md-4 form-input-button" option-index={{@index}}>
+        <a href="#" class="thumbnail">
+            <h2>{{this}}</h2>
+        </a>
+    </div>
+{{/each}}

@@ -1,0 +1,8 @@
+/* Formatting for new person form input */
+#question-header-text {
+    text-align: center;
+}
+#bootstrap-overrides .form-input-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
