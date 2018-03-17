@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes){
             }
         },
     });
+    // adds groupId column to contacts.
     Group.associate = function(models){
         Group.hasMany(models.Contact, {
             

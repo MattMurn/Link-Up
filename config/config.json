@@ -13,11 +13,12 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
-    "username": "root",
-    "password": null,
+  "production": { 
+    "username": "y969zcc48y3s9r6s",
+    "password": "h5yfbbmbm9pxgxl5",
     "database": "database_production",
-    "host": "127.0.0.1",
+    "use_env_variable": "DATABASE_URL",
+    "host": "ipobfcpvprjpmdo9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
