@@ -7,14 +7,14 @@
 {{!-- Populate the page with the appropriate template depending on the question type --}}
   {{!-- 3 types (radio, one-click, and entry) --}}
   <div class="row">
-    {{#if question.type="radio"}}
-      {{> radio}}
-    {{/if}}
-    {{#if question.type="one-click"}}
-      {{> oneClick}}
-    {{/if}}
-    {{#if question.type="entry"}}
-      {{> userEntry}}
+    {{#if question.radio}}
+      {{#each question.options}}
+        {{> radio }}
+      {{/each}}
+    {{else if question.oneClick}}
+      {{> oneClick }}
+    {{else if question.userEntry}}
+      {{> userEntry }}
     {{/if}}
 
   {{!-- Skip button in case the user doesn't want to enter this particular data --}}
