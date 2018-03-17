@@ -83,17 +83,8 @@ module.exports = function(sequelize, DataTypes){
     // association that is goihttps://drive.google.com/file/d/1w3zSQXN-a4KpvgW9O6zmztbuW6veKt9q/view?usp=sharingng to have a column for userId.
     // add belongsTo(models.Group, {}) to get groupID in contacts tables.
     Contact.associate = function(models){
-        Contact.belongsTo(models.User,{
-            foreignKey: {
-                allowNull: false
-            }
-        });
-        Contact.belongsTo(models.Group, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-
+        Contact.belongsTo(models.User,{ foreignKey: 'UserId'});
+        Contact.belongsTo(models.Group, {foreignKey: 'GroupId'});
     };
 
     return Contact;

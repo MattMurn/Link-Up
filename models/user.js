@@ -27,6 +27,7 @@ module.exports = function(sequelize, DataTypes){
         User.hasMany(models.Contact, {
             onDelete: "cascade"
         });
+        User.hasMany(models.Group, {});
     };
     
     return User;
