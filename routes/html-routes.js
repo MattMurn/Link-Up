@@ -24,9 +24,17 @@ module.exports = function(app) {
     //      
     app.get("/addnew", function(req, res) {
       
+      // Model for question object to pass into template
       var question = {
-        checkbox: false,
-        oneClick: true,
+        id: 2,
+        title: "This is a question, there are many like it but this one is this one",
+
+        // For checkbox, oneClick, and userEntry, only 1 of the 3 can be true.
+        // Checkbox for an array of thumbnails, many of them can be selected before submitting
+        checkbox: true,
+        // OneClick for an array of thumbnails where only a single one can be selected before submitting
+        oneClick: false,
+        // UserEntry for providing a list of text entry fields
         userEntry: false,
         options: ["serious", "friendly", "quiet", "bold"]
       }
@@ -34,6 +42,16 @@ module.exports = function(app) {
         question: question
       }
 
-      res.render("question", questionObject);
+      res.render("question", {
+        question: question,
+        helpers: {
+          ifCond: function (variable, value, options) { 
+            if (variable === value) {
+              return options.fn(this);
+            }
+            return options.inverse(this);
+          }
+      }
+      });
     });
 };
