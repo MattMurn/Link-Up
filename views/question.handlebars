@@ -8,16 +8,16 @@
   {{!-- 3 types (radio, one-click, and entry) --}}
   <div class="row">
     {{!-- Load select template with radio buttons on --}}
-    {{#if question.radio}}
-      {{> select isRadio=true}}
+    {{#if question.checkbox}}
+      {{> addnew/select isCheckbox="yes" }}
 
     {{!-- Load select template with radio buttons off --}}
     {{else if question.oneClick}}
-      {{> select isRadio=false}}
+      {{> addnew/select isCheckbox="no" }}
 
     {{!-- Load user entry fied template --}}
     {{else if question.userEntry}}
-      {{> userEntry }}
+      {{> addnew/userEntry }}
     {{/if}}
 
   {{!-- Skip button in case the user doesn't want to enter this particular data --}}

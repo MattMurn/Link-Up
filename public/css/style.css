@@ -1,8 +1,16 @@
 /* Formatting for new person form input */
-#question-header-text {
-    text-align: center;
-}
-#bootstrap-overrides .form-input-button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+    #question-header-text {
+        text-align: center;
+    }
+    #bootstrap-overrides .form-input-button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    /* For thumbnails that are not selected or have been un-selected */
+    .form-input-button[user-selected="no"]>a {
+        background-color: lightgray;
+    }
+    /* For thumbnails that HAVE been selected */
+    .form-input-button[user-selected="yes"]>a {
+        background-color: lightgreen;
+    }

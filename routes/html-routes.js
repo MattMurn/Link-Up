@@ -25,8 +25,8 @@ module.exports = function(app) {
     app.get("/addnew", function(req, res) {
       
       var question = {
-        radio: true,
-        oneClick: false,
+        checkbox: false,
+        oneClick: true,
         userEntry: false,
         options: ["serious", "friendly", "quiet", "bold"]
       }
