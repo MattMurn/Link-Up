@@ -21,5 +21,14 @@
     {{else if question.userEntry}}
       {{> addnew/userEntry }}
     {{/if}}
+
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-danger" id="skip-question">Skip</button>
+        {{#unless question.oneClick}}
+          <button type="button" class="btn btn-primary" id="submit-answers">Submit</button>
+        {{/unless}}
+      </div>
+    </div>
   </div>
 </div>

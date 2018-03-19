@@ -1,11 +1,11 @@
 {{!-- create a container for each field --}}
 {{#each question.options}}
     {{!-- form-input-field class is solely for styling purposes --}}
-    <div class="col-md-12 form-input-field">
+    <div class="col-md-12 form-input-field" option-index={{@index}}>
         <form>
             <div class="form-group">
                 <label for=""></label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder={{this.options}}>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="{{this}}">
             </div>
         </form>
     </div>

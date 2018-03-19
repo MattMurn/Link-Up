@@ -31,12 +31,12 @@ module.exports = function(app) {
 
         // For checkbox, oneClick, and userEntry, only 1 of the 3 can be true.
         // Checkbox for an array of thumbnails, many of them can be selected before submitting
-        checkbox: true,
+        checkbox: false,
         // OneClick for an array of thumbnails where only a single one can be selected before submitting
         oneClick: false,
         // UserEntry for providing a list of text entry fields
-        userEntry: false,
-        options: ["serious", "friendly", "quiet", "bold"]
+        userEntry: true,
+        options: ["What industry does this person work in?", "What is thie person's job title?", "What is a common interest you share with this person?"]
       }
       var questionObject = {
         question: question
@@ -45,12 +45,13 @@ module.exports = function(app) {
       res.render("question", {
         question: question,
         helpers: {
-          ifCond: function (variable, value, options) { 
-            if (variable === value) {
-              return options.fn(this);
-            }
-            return options.inverse(this);
-          }
+          // This helper code made obsolete by moving buttons to question template from select template
+          // ifCond: function (variable, value, options) { 
+          //   if (variable === value) {
+          //     return options.fn(this);
+          //   }
+          //   return options.inverse(this);
+          // }
       }
       });
     });
