@@ -22,6 +22,7 @@
     "body-parser": "*",
     "express": "*",
     "express-handlebars": "*",
+    "handlebars": "^4.0.11",
     "mysql": "*",
     "mysql2": "*",
     "sequelize": "*"

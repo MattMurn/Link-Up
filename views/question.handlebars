@@ -1,23 +1,25 @@
 {{!-- Header asking for a particular type of informtion --}}
 <div class="container">
-    <row>
-        <div class="col-offset-md-12" id="question-text">Trait/Question Here</div>
-    </row>
+    <div class="row">
+        <div class="col-md-12" id="question-header-text" question-id="{{question.id}}" num-questions={{question.options.length}}>
+          <h1 >{{question.title}}</h1>
+        </div>
+    </div>
 
 {{!-- Populate the page with the appropriate template depending on the question type --}}
   {{!-- 3 types (radio, one-click, and entry) --}}
-  <div class="row">
-    {{#if question.type="radio"}}
-      {{> radio}}
-    {{/if}}
-    {{#if question.type="one-click"}}
-      {{> oneClick}}
-    {{/if}}
-    {{#if question.type="entry"}}
-      {{> userEntry}}
-    {{/if}}
+  <div class="row answer-thumbnails">
+    {{!-- Load select template with radio buttons on --}}
+    {{#if question.checkbox}}
+      {{> addnew/select isCheckbox="yes" }}
 
-  {{!-- Skip button in case the user doesn't want to enter this particular data --}}
-  <button type="button" class="btn btn-danger" id="skip-question">Skip</button>
+    {{!-- Load select template with radio buttons off --}}
+    {{else if question.oneClick}}
+      {{> addnew/select isCheckbox="no" }}
+
+    {{!-- Load user entry fied template --}}
+    {{else if question.userEntry}}
+      {{> addnew/userEntry }}
+    {{/if}}
   </div>
 </div>

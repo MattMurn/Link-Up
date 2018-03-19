@@ -25,6 +25,18 @@ app.use(bodyParser.json());
 //Require handlebars for html templating
 var exphbs = require("express-handlebars");
 
+// var hbs = exphbs.create({
+//   // Specify helpers which are only registered on this instance. 
+//   helpers: {
+//       ifCond: function (variable, value, options) { 
+//         if (variable === value) {
+//           return options.fn(this);
+//         }
+//         return options.inverse(this);
+//       }
+//   }
+// });
+
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");

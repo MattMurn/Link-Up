@@ -1,0 +1,30 @@
+/* Formatting for new person form input */
+    #question-header-text {
+        text-align: center;
+    }
+    #bootstrap-overrides .form-input-button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    /* For all thumbnails */
+    .form-input-button>a {
+        text-decoration: none;
+    }
+    /* For thumbnails that are not selected or have been un-selected */
+    .form-input-button[user-selected="no"]>a {
+        background-color: lightgray;
+    }
+    /* For thumbnails not currently selected but being hovered */
+    .form-input-button[user-selected="no"]>a:hover, .form-input-button[user-selected="no"]>a:hover>.option-text {
+        background-color: lightyellow;
+        transition: background-color 0.2s;
+    }
+    /* For thumbnails that HAVE been selected */
+    .form-input-button[user-selected="yes"]>a {
+        background-color: lightgreen;
+    }
+    .option-text {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }

@@ -15,10 +15,11 @@ module.exports = function(sequelize, DataTypes){
             }
         },
         phone: {
+            // validation issues with phone number length
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                isNumeric: true
+                len: [1]
             }
         }
     });
@@ -27,6 +28,7 @@ module.exports = function(sequelize, DataTypes){
         User.hasMany(models.Contact, {
             onDelete: "cascade"
         });
+        User.hasMany(models.Group, {});
     };
     
     return User;
