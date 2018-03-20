@@ -18,9 +18,32 @@ function toggleSelected(element, isCheckbox) {
     element.attr("user-selected", selected);
 }
 
+// Get answer(s) from select tempalte
+function getAnswersSelect(answer) {
+    // Get the form-input element
+    var thisButton = $(`.form-input-button[option-index=${i}]`);
+    
+    // Is this one of the user's selections?
+    var isSelected = thisButton.attr("user-selected");
+
+    if (isSelected === "yes") {
+        // Get answer index
+        var thisIndex = thisButton.attr("option-index");
+        
+        // Get answer text and store into answer, then return
+        var answer = thisButton.attr("option-index").find(".option-text");
+        return answer;
+    }
+}
+
+// Get answer(s) from userEntry tempalte
+function getAnswersUserEntry() {
+
+}
+
 // For the select template, store the answer(s) in local storage. 
 // Name of the data is the question id, and the answers are stored in an array
-function submitFromSelect() {
+function submitAnswers() {
     // Get the number of possible answers to this question from the question header element
     var numQuestions = $("#question-header-text").attr("num-questions");
     // Get the question ID as it is from the database to use as the name of this answer
@@ -30,28 +53,14 @@ function submitFromSelect() {
 
     // Loop for each answer possible
     for (var i = 0; i < numQuestions; i++) {
-        // Get the form-input element
-        var thisButton = $(`.form-input-button[option-index=${i}]`);
-        // Is this one of the user's selections?
-        var isSelected = thisButton.attr("user-selected");
-
-        if (isSelected === "yes") {
-            // Get answer index
-            var thisIndex = thisButton.attr("option-index");
-            // Push selected answer indices into array
-            answers.push(thisIndex);
-        }
+        // Get answer(s) for select template
+        answers.push(getAnswersSelect());
+        // Get answer(s) for userEntry template
+        getAnswersUserEntry();
     }
-        // Store the data
-        localStorage.setItem(questionId, answers);
-        console.log(questionId);
-        console.log(answers);
 }
 
-// For select template with checkbox=true, submit data once the submit button is pressed
-function submitCheckbox() {
 
-}
 
 
 $(document).ready(function() {
@@ -67,7 +76,7 @@ $(document).ready(function() {
         toggleSelected(element, isCheckbox);
 
         if (isCheckbox === "no") {
-            submitFromSelect();
+            submitAnswers();
         }
         
     });

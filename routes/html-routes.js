@@ -25,33 +25,51 @@ module.exports = function(app) {
     app.get("/addnew", function(req, res) {
       
       // Model for question object to pass into template
-      var question = {
-        id: 2,
-        title: "This is a question, there are many like it but this one is this one",
-
-        // For checkbox, oneClick, and userEntry, only 1 of the 3 can be true.
-        // Checkbox for an array of thumbnails, many of them can be selected before submitting
-        checkbox: false,
-        // OneClick for an array of thumbnails where only a single one can be selected before submitting
-        oneClick: false,
-        // UserEntry for providing a list of text entry fields
-        userEntry: true,
-        options: ["What industry does this person work in?", "What is thie person's job title?", "What is a common interest you share with this person?"]
-      }
-      var questionObject = {
-        question: question
-      }
+      var question = [
+        {
+          id: 1,  // QuestionID
+          // Type is either "check", "selectOne", "textShort", or "textLong"
+          type: "check",  // Determines which template to load
+          title: "What was their personality like?",  // The prompt for this entry
+          options: ["Serious", "Quiet", "Warm", "Friendly", "Bold"],  // The options to select, or category names for text entry
+          contactId: 1  // Contact ID being created
+        },
+        {
+          id: 2,  // QuestionID
+          // Type is either "check", "selectOne", "textShort", or "textLong"
+          type: "selectOne",  // Determines which template to load
+          title: "Gender?",  // The prompt for this entry
+          options: ["Male", "Female"],  // The options to select, or category names for text entry
+          contactId: 1  // Contact ID being created
+        },
+        {
+          id: 3,  // QuestionID
+          // Type is either "check", "selectOne", "textShort", or "textLong"
+          type: "textShort",  // Determines which template to load
+          title: "Occupation?",  // The prompt for this entry
+          options: ["The person's job was...?"],  // The options to select, or category names for text entry
+          contactId: 1  // Contact ID being created
+        },
+        {
+          id: 4,  // QuestionID
+          // Type is either "check", "selectOne", "textShort", or "textLong"
+          type: "textLong",  // Determines which template to load
+          title: "Notes",  // The prompt for this entry
+          options: ["Conversation topics, hobbies, etc."],  // The options to select, or category names for text entry
+          contactId: 1  // Contact ID being created
+        }
+      ];
 
       res.render("question", {
         question: question,
         helpers: {
           // This helper code made obsolete by moving buttons to question template from select template
-          // ifCond: function (variable, value, options) { 
-          //   if (variable === value) {
-          //     return options.fn(this);
-          //   }
-          //   return options.inverse(this);
-          // }
+          ifCond: function (variable, value, options) { 
+            if (variable === value) {
+              return options.fn(this);
+            }
+            return options.inverse(this);
+          }
       }
       });
     });
