@@ -24,7 +24,7 @@
       {{> addnew/userEntry numRows="1"}}
     {{/ifCond}}
 
-    {{!-- Load user entry field with large input area --}}
+    {{!-- Load user entry field with large input area, number of rows is passed in from here --}}
     {{#ifCond question.type "textLong"}}
       {{> addnew/userEntry numRows="5"}}
     {{/ifCond}}
