@@ -36,6 +36,27 @@ module.exports = function(sequelize, DataTypes){
                 len: [1]
             }
         },
+        gender: {
+            type:DataTypes.STRING, 
+            allowNull: true, 
+            validate: {
+                len: [1]
+            }
+        },
+        occupation: {
+            type:DataTypes.STRING, 
+            allowNull: true, 
+            validate: {
+                len: [1]
+            }
+        },
+        hair: {
+            type:DataTypes.STRING, 
+            allowNull: true, 
+            validate: {
+                len: [1]
+            }
+        },
         height: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -57,7 +78,7 @@ module.exports = function(sequelize, DataTypes){
                 len: [1]
             }
         },
-        attire: {
+        clothing: {
             type: DataTypes.TEXT, 
             allowNull: true,
             validate: {

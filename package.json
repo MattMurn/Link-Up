@@ -24,7 +24,7 @@
     "express-handlebars": "*",
     "handlebars": "^4.0.11",
     "mysql": "*",
-    "mysql2": "*",
-    "sequelize": "*"
+    "sequelize": "*",
+    "sequelize-cli": "^4.0.0"
   }
 }
