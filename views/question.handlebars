@@ -1,25 +1,16 @@
 {{!-- Header asking for a particular type of informtion --}}
 <div class="container">
-    <div class="row">
-        <div class="col-md-12" id="question-header-text" question-id="{{question.id}}" num-questions={{question.options.length}}>
-          <h1 >{{question.title}}</h1>
-        </div>
+  <div class="row">
+    <div class="col-md-12" id="question-header-text" question-id="{{question.id}}" num-questions={{question.options.length}}>
+      <h1>{{question.title}}</h1>
     </div>
+  </div>
 
-{{!-- Populate the page with the appropriate template depending on the question type --}}
-  {{!-- 3 types (radio, one-click, and entry) --}}
+  {{!-- Populate the page with the appropriate template depending on the question type --}} {{!-- 3 types (radio, one-click,
+  and entry) --}}
   <div class="row answer-thumbnails">
-    {{!-- Load select template with radio buttons on --}}
-    {{#if question.checkbox}}
-      {{> addnew/select isCheckbox="yes" }}
-
-    {{!-- Load select template with radio buttons off --}}
-    {{else if question.oneClick}}
-      {{> addnew/select isCheckbox="no" }}
-
-    {{!-- Load user entry fied template --}}
-    {{else if question.userEntry}}
-      {{> addnew/userEntry }}
-    {{/if}}
+    {{!-- Load select template with radio buttons on --}} {{#if question.checkbox}} {{> addnew/select isCheckbox="yes" }} {{!--
+    Load select template with radio buttons off --}} {{else if question.oneClick}} {{> addnew/select isCheckbox="no" }} {{!--
+    Load user entry fied template --}} {{else if question.userEntry}} {{> addnew/userEntry }} {{/if}}
   </div>
 </div>

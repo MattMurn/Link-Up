@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes){
+module.exports = function (sequelize, DataTypes) {
     var Questions = sequelize.define("Questions", {
 
         type: DataTypes.STRING,
@@ -9,75 +9,75 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING
         }
     });
-    
+
     // Questions.associate = function(models){
     //     Questions.hasMany(models.Options, {foreignKry: 'questionId'});
     // };
     Questions.bulkCreate([{
-        type: 'textShort', 
+        type: 'textShort',
         title: 'Enter a name',
         contactCol: 'name'
-       
+
     },
     {
-        type: 'text', 
+        type: 'text',
         title: 'Enter a location',
         contactCol: 'location'
-        
+
     },
     {
-        type: 'select', 
+        type: 'select',
         title: 'select a category',
         contactCol: 'category'
     },
     {
-        type: 'textShort', 
+        type: 'textShort',
         title: 'Enter a profession',
         contactCol: 'profession'
     },
     {
-        type: 'select', 
+        type: 'select',
         title: 'Gender',
         contactCol: 'gender'
     },
     {
-        type: 'select', 
+        type: 'select',
         title: 'Age',
         contactCol: 'age'
     },
     {
-        type: 'select', 
+        type: 'select',
         title: 'Complexion',
         contactCol: 'complexion'
     },
     {
-        type: 'select', 
+        type: 'select',
         title: 'build',
         contactCol: 'build'
     },
     {
-        type: 'select', 
+        type: 'select',
         title: 'height',
         contactCol: 'height'
     },
     {
-        type: 'select', 
+        type: 'select',
         title: 'hair',
         contactCol: 'hair'
     },
     {
-        type: 'text', 
+        type: 'text',
         title: 'clothing',
         contactCol: 'clothing'
     },
     {
-        type: 'text', 
+        type: 'text',
         title: 'Notes',
         contactCol: 'notes'
     }
 
-    ]).then(function(){
-                console.log("created")
+    ]).then(function () {
+        console.log("created")
     });
 
     // adds groupId column to contacts.
