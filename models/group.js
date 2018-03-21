@@ -1,12 +1,12 @@
-module.exports = function(sequelize, DataTypes){
+module.exports = function (sequelize, DataTypes) {
     var Group = sequelize.define("Group", {
 
         category: {
-            type: DataTypes.STRING, 
-            allowNull: false, 
+            type: DataTypes.STRING,
+            allowNull: false,
             validate: {
                 len: [1],
-                isAlphaNumeric: true    
+                isAlphaNumeric: true
             }
         },
     });
