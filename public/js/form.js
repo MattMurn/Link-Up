@@ -38,11 +38,11 @@ function getAnswersSelect(answer) {
 
 // Get answer(s) from userEntry tempalte
 function getAnswersUserEntry() {
-
+    var answer = $("#answer-text").text();
+    return answer;
 }
 
-// For the select template, store the answer(s) in local storage. 
-// Name of the data is the question id, and the answers are stored in an array
+// Function to get answers for any type of question from elements
 function submitAnswers() {
     // Get the number of possible answers to this question from the question header element
     var numQuestions = $("#question-header-text").attr("num-questions");
@@ -50,13 +50,19 @@ function submitAnswers() {
     var questionId = $("#question-header-text").attr("question-id");
     // Declare array for storing answers
     var answers = [];
+    // Get question type
+    var questionType = $("#question-header-text").attr("question-type");
 
     // Loop for each answer possible
     for (var i = 0; i < numQuestions; i++) {
-        // Get answer(s) for select template
-        answers.push(getAnswersSelect());
-        // Get answer(s) for userEntry template
-        getAnswersUserEntry();
+        if (questionType === "check" || questionType === "selectOne") {
+            // Get answer(s) for select template
+            answers.push(getAnswersSelect());
+        }
+        else if (questionType === "textShort" || questionType === "textLong") {
+            // Get answer(s) for userEntry template
+            answers.push(getAnswersUserEntry());
+        }
     }
 }
 
@@ -75,9 +81,24 @@ $(document).ready(function() {
         // Toggle user-selected attribute(s) to yes or no
         toggleSelected(element, isCheckbox);
 
-        if (isCheckbox === "no") {
+        if ($("#question-header-text").attr("question-type") === "selectOne") {
             submitAnswers();
         }
-        
+    });
+
+    // Submit answers on this page and go to the next question
+    $("#next-button").click(function() {
+        submitAnswers();
+        // Send data to the server
+        $.ajax("/api/addnew/questionId/:questionId/contactId/:contactId/answer/:answer", {
+            type: "POST"
+        }).then(function() {
+            
+        })
+    });
+
+    // Submit answers on this page skpi the rest of the questions
+    $("#done-button").click(function() {
+
     });
 });

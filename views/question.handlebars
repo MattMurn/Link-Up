@@ -1,7 +1,7 @@
 {{!-- Header asking for a particular type of informtion --}}
 <div class="container">
     <div class="row">
-        <div class="col-md-12" id="question-header-text" question-id="{{question.id}}" num-questions={{question.options.length}}>
+        <div class="col-md-12" id="question-header-text" question-type="{{question.type}}" question-id="{{question.id}}" num-questions={{question.options.length}}>
           <h1 >{{question.title}}</h1>
         </div>
     </div>
@@ -31,8 +31,8 @@
 
     <div class="row">
       <div class="col-md-12">
-        <button type="button" class="btn btn-primary" id="submit-answers">Next</button>
-        <button type="button" class="btn btn-danger" id="skip-question">Done</button>
+        <button type="button" class="btn btn-primary" id="next-button">Next</button>
+        <button type="button" class="btn btn-danger" id="done-button">Done</button>
       </div>
     </div>
   </div>
