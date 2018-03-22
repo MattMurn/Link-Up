@@ -1,21 +1,27 @@
-// Toggle the clicked element's "user-selected" attribute to either "yes" or "no"
-function toggleSelected(element, isCheckbox) {
-    // Find out if the thumbnail is currently selected or not
-    var selected = element.attr("user-selected");
+// Function to get answers for any type of question from elements
+function submitAnswers() {
+    // Get the number of possible answers for this page
+    var numQuestions = $("#question-header-text").attr("num-questions");
+
+    // Declare array for storing answers
+    var answers = [];
     
-    // Toggle the "user-selected" attribute
-    if (selected === "yes") {
-        selected = "no";
-    }
-    else {
-        selected = "yes";
-    }
+    // Get question type
+    var questionType = $("#question-header-text").attr("question-type");
     
-    // If not a checkbox, reset all other elements to not selected
-    if (isCheckbox === "no") {
-        $(".form-input-button").attr("user-selected", "no");
+    // Loop for each possible answer
+    for (var i = 0; i < numQuestions; i++) {
+        if (questionType === "check" || questionType === "selectOne") {
+            // Get answer(s) for select template
+            answers.push(getAnswersSelect());
+        }
+        else if (questionType === "textShort" || questionType === "textLong") {
+            // Get answer(s) for userEntry template
+            answers.push(getAnswersUserEntry());
+        }
     }
-    element.attr("user-selected", selected);
+    answers = answers.join();
+    return answers;
 }
 
 // Get answer(s) from select tempalte
@@ -36,40 +42,39 @@ function getAnswersSelect(answer) {
     }
 }
 
-// Get answer(s) from userEntry tempalte
+// Get answer(s) from userEntry template
 function getAnswersUserEntry() {
     var answer = $("#answer-text").text();
     return answer;
 }
 
-// Function to get answers for any type of question from elements
-function submitAnswers() {
-    // Get the number of possible answers to this question from the question header element
-    var numQuestions = $("#question-header-text").attr("num-questions");
-    // Get the question ID as it is from the database to use as the name of this answer
-    var questionId = $("#question-header-text").attr("question-id");
-    // Declare array for storing answers
-    var answers = [];
-    // Get question type
-    var questionType = $("#question-header-text").attr("question-type");
-
-    // Loop for each answer possible
-    for (var i = 0; i < numQuestions; i++) {
-        if (questionType === "check" || questionType === "selectOne") {
-            // Get answer(s) for select template
-            answers.push(getAnswersSelect());
-        }
-        else if (questionType === "textShort" || questionType === "textLong") {
-            // Get answer(s) for userEntry template
-            answers.push(getAnswersUserEntry());
-        }
+// Toggle the clicked element's "user-selected" attribute to either "yes" or "no"
+function toggleSelected(element, isCheckbox) {
+    // Find out if the thumbnail is currently selected or not
+    var selected = element.attr("user-selected");
+    
+    // Toggle the "user-selected" attribute
+    if (selected === "yes") {
+        selected = "no";
     }
+    else {
+        selected = "yes";
+    }
+    
+    // If not a checkbox, reset all other elements to not selected
+    if (isCheckbox === "no") {
+        $(".form-input-button").attr("user-selected", "no");
+    }
+    element.attr("user-selected", selected);
 }
 
 
 
 
+
 $(document).ready(function() {
+    
+
     // Change the element attribute so it is known which thumbnail(s) are selected
     $("a.thumbnail").click(function() {
         // Select the container element houseing the thumbnail
@@ -88,17 +93,32 @@ $(document).ready(function() {
 
     // Submit answers on this page and go to the next question
     $("#next-button").click(function() {
-        submitAnswers();
+
+        // Get the question ID
+        var questionId = $("#question-header-text").attr("question-id");
+
+        // Get the loop index to load the next page
+        var questionIndex = $("#question-header-text").attr("question-index");
+
+        // Get the contact ID
+        var contactId = $("#question-header-text").attr("contact-id");
+        
+        // Get answers from the page
+        var answer = submitAnswers();
+
+        // Set ajax url (/api/addnew/questionId/:questionId/contactId/:contactId/answer/:answer)
+        var queryPostUrl = `/api/addnew/questionId/:questionId/contactId/:contactId/answer/:answer`
+
         // Send data to the server
-        $.ajax("/api/addnew/questionId/:questionId/contactId/:contactId/answer/:answer", {
+        $.ajax(`/api/addnew/questionId/${questionId}/contactId/${contactId}/answer/${answer}`, {
             type: "POST"
         }).then(function() {
-            
+
         })
     });
 
     // Submit answers on this page skpi the rest of the questions
     $("#done-button").click(function() {
-
+        submitAnswers();
     });
 });
