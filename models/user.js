@@ -1,50 +1,15 @@
-module.exports = function(sequelize, DataTypes){
-    var User = sequelize.define('User', {
-        name: {
-           type: DataTypes.STRING,
-           allowNull: false, 
-           validate: {
-               len: [1]
-           }
-        }, 
-        email: {
-            type: DataTypes.STRING, 
-            allowNull: false, 
-            validate: {
-                isEmail: true
-            }
-        },
-        phone: {
-            // validation issues with phone number length
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        }
-    });
-
-    User.associate = function(models){
-        User.hasMany(models.Contact, {
-            onDelete: "cascade"
-        });
-        User.hasMany(models.Group, {});
-    };
-    
-    return User;
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  var User = sequelize.define('User', {
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
+  }, {});
+  User.associate = function(models) {
+    User.hasMany(models.Contact, 
+      {foreignKey: 'userId', onDelete: "cascade"});
+    // associations can be defined here
+  };
+  return User;
 };
-
-/*
-syntax for association.
-Contact.associate = function(models){
-    Contact.belongsTo(models.User, {
-        foreignKey: {
-            allowNull: false
-        }
-    });
-    //have to return Contact after its association
-    is applied.
-    return Contact;
-}
-
-*/

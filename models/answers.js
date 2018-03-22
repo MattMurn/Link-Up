@@ -1,17 +1,15 @@
 module.exports = function(sequelize, DataTypes){
-    var Options = sequelize.define("Options", {
+    var Answers = sequelize.define("Answers", {
 
         text: DataTypes.STRING,
-        contactCol: {
-            type: DataTypes.STRING
-        },
+        contactCol: DataTypes.STRING,
         questionId: DataTypes.INTEGER
     });
-    Options.associate = function(models){
-        Options.belongsTo(models.Questions, {foreignKey: 'questionId'});
+    Answers.associate = function(models){
+        // Options.belongsTo(models.Questions, {foreignKey: 'questionId'});
         // adds groupId column to contacts.  
     };
-    Options.bulkCreate([
+    Answers.bulkCreate([
         {
             type: DataTypes.STRING,
             contactCol: 'name',
@@ -56,5 +54,5 @@ module.exports = function(sequelize, DataTypes){
     ]);
  
     
-    return Options;
+    return Answers;
 };

@@ -1,30 +1,19 @@
-CREATE DATABASE rightful_penguin;
+/*
+Instructions for getting database up and running on local machine:
+ 
+1.) copy/paste the code below in mysql workbench:
 
-USE rightful_penguin;
+    drop database rightful_penguin;
+    create database rightful_penguin;
+    use rightful_penguin;
 
-CREATE TABLE user(
-    id INT NOT NULL AUTO_INCREMENT,
-    user_name TEXT NOT NULL,
-    user_phone INT NOT NULL,
-    user_email TEXT NOT NULL,
-    PRIMARY KEY(id)
-);
+2.) make sure development password is correct in config/config.json
 
-CREATE TABLE contacts(
-    id INT NOT NULL AUTO_INCREMENT,
-    contact_name TEXT NULL,
-    contact_where TEXT NULL,
-    contact_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    contact_attr TEXT NULL,
-    contact_geo TEXT NULL,
-    contact_notes TEXT NULL,
-    PRIMARY KEY(id)
-);
+=== node commands === 
 
-CREATE TABLE groups(
-    id INT NOT NULL AUTO_INCREMENT,
-    group_name TEXT NOT NULL,
-    group_size INT NOT NULL, 
-    group_notes TEXT NULL,
-    PRIMARY KEY(id)
-);
+3.) npm install to get dependencies
+4.) run node server.js - creates tables
+5.) run sequelize db:seed:all - seeds database with info from seeders folder.
+
+-- still working on the associations
+*/
