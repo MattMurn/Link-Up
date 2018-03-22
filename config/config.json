@@ -13,11 +13,13 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+  "production": { 
+    "username": "m8agvq6k96aubyzi",
+    "password": "i0mgnhylg0twtrc4",
+    "database": "rightful_penguin",
+    "database_url": "mysql://m8agvq6k96aubyzi:i0mgnhylg0twtrc4@ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vqm8nrtjx0ij9tjn",
+    "use_env_variable": "DATABASE_URL",
+    "host": "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
