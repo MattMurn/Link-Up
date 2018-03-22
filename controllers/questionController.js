@@ -20,22 +20,20 @@ module.exports = function (app) {
                 id: req.params.id
             }
         }).then(function (question) {
-            var hbsQuestionObj = {
-                question: question
-            };
-            res.render("question", hbsQuestionObj);
-        });
 
-        db.Options.findAll({
-            where: {
-                questionId: req.params.id
-            }
-        }).then(function (options) {
-            var hbsOptionsObj = {
-                options: options
-            };
-
-            res.render("question", hbsOptionsObj);
+            db.Options.findAll({
+                where: {
+                    questionId: req.params.id
+                }
+            }).then(function (question, options) {
+                question.options = options;
+                
+                var hbsObj = {
+                    question: question,
+                };
+                
+                res.render("question", hbsObj);
+            });
         });
     });
 

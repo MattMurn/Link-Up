@@ -1,10 +1,12 @@
 {{!-- Header asking for a particular type of informtion --}}
 <div class="container">
+  {{#questions}}
   <div class="row">
-    <div class="col-md-12" id="question-header-text" question-id="{{question.id}}" num-questions={{question.options.length}}>
+    <div class="col-md-12" id="question-header-text" question-type="{{question.type}}" data-id="{{question.id}}" num-questions={{options.length}}>
       <h1>{{question.title}}</h1>
     </div>
   </div>
+  {{/questions}}
 
   {{!-- Populate the page with the appropriate template depending on the question type --}} {{!-- 3 types (radio, one-click,
   and entry) --}}
