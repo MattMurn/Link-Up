@@ -2,42 +2,9 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:*/
-      // return queryInterface.removeConstraint('answers', 'questionId', {}).then(()=>{
-      //   return queryInterface.bulkInsert('answers',
-      //     [ 
-      //       {
-      //       text: 'tall', 
-      //       contactCol: 'name',
-      //       questionId: 1,
-      //       createdAt: new Date(),
-      //       updatedAt: new Date()
-      //   }
-      
-      //   ]
-      //   , {}).then(()=>{
-      //     return queryInterface.addConstraint('answers', ['quesitonId'], {
-      //       type: 'FOREIGN KEY',
-      //       name: 'questionId',
-      //       references: { //Required field
-      //         table: 'questions',
-      //         field: 'id'
-      //       },
-      //       onDelete: 'set NULL',
-      //       onUpdate: 'cascade'
-      //     });
-      //   });
-      // });
-      
-      // },
-
       return queryInterface.bulkInsert('answers', [
         {
-            text: 'tall', 
+            text: '', 
             contactCol: 'name',
             questionId: 1,
             createdAt: new Date(),
@@ -46,7 +13,7 @@ module.exports = {
 
         {
 
-            text: 'medium', 
+            text: '', 
             contactCol: 'location',
             questionId: 2,
             createdAt: new Date(),

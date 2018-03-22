@@ -4,34 +4,46 @@ var db = require("../models");
 module.exports = function (app) {
 
     app.get("/api/addnew/:id", function (req, res) {
-        db.Questions.findAll({
-            include: {
-                model: db.Options,
-            }
+        db.Question.findAll({
+            // include: {
+            //     model: db.Answers,
+            // }
         }).then(function (dataQ) {
             res.json(dataQ);
-            console.log(dataQ);
+            // console.log(dataQ);
         });
     })
     // HTML ROUTES
     app.get("/addnew/:id", function (req, res) {
-        db.Questions.findOne({
+        db.Question.findAll({
             where: {
                 id: req.params.id
             }
-        }).then(function (question) {
 
-            db.Options.findAll({
+        }).then(function (question) {
+            // console.log(question[0].title);
+            db.Answers.findAll({
                 where: {
                     questionId: req.params.id
                 }
-            }).then(function (question, options) {
-                question.options = options;
+            }).then(function (Answers) {
+                console.log(Answers);
+                var test = question[0]
+                test.answers =Answers;
+                // question.Answers = Answers;
                     
                 var hbsObj = {
-                    question: question,
+                    question: test,     
+                    helpers: {
+                        ifCond: function (variable, value, options) {
+                          if (variable === value) {
+                            return options.fn(this);
+                          }
+                          return options.inverse(this);
+                        }
+                      }
                 };
-                
+                // console.log(hbsObj.question);
                 res.render("question", hbsObj);
             });
         });
