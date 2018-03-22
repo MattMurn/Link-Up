@@ -8,13 +8,3 @@
         </a>
     </div>
 {{/each}}
-<div class="row">
-    <div class="col-md-12">
-        <button type="button" class="btn btn-danger" id="skip-question">Skip</button>
-{{#ifCond isCheckbox "yes"}}
-        <button type="button" class="btn btn-primary" id="submit-answers">Submit</button>
-{{/ifCond}}
-    </div>
-</div>
-{{!-- Javascript file for interacting with answers --}}
-<script src="./js/form.js"><{{!}}/script>
