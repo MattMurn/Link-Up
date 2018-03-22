@@ -27,7 +27,7 @@ module.exports = function (app) {
                 }
             }).then(function (question, options) {
                 question.options = options;
-                
+                    
                 var hbsObj = {
                     question: question,
                 };
