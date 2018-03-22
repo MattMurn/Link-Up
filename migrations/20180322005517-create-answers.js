@@ -8,16 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       }
-            // createdAt: {
-      //   allowNull: true,
-      //   type: Sequelize.DATE,
-      //   default: 
-      // },
-      // updatedAt: {
-      //   allowNull: true,
-      //   type: Sequelize.DATE
-      // }
-    });
+        });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Answers');

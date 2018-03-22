@@ -15,5 +15,9 @@ Instructions for getting database up and running on local machine:
 4.) run node server.js - creates tables
 5.) run sequelize db:seed:all - seeds database with info from seeders folder.
 
+=== comments ===
+
+to re seed db, just repeat but skip steps 2 & 3.
+
 -- still working on the associations
 */
