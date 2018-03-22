@@ -6,7 +6,7 @@ User Routes:
     delete User
 */
 
-var db = require("../models/user.js");
+var db = require("../models");
 // this route gets User info and contacts 
 module.exports = function(app) {
     //get all users
