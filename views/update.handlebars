@@ -1,0 +1,101 @@
+<div class="container">
+        <div class="row" style="margin-bottom: 20px; text-align: center">
+            <ul class="nav nav-pills nav-justified" style="display: inline-block">
+                <li role="presentation" class="active">
+                    <a class="view-info" data-toggle="pill">
+                        <h4>Info</h4>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a class="view-char" data-toggle="pill">
+                        <h4>Characteristics</h4>
+                        <span class="glyphicons glyphicons-user"></span>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a class="view-notes" data-toggle="pill">
+                        <h4>Notes</h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- INFO -->
+        <div id="info" class="row">
+            <div class="col-md-6">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" value="{{name}}">
+                    </div>
+            </div>
+            <div class="col-md-6">
+                    <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" value="{{email}}">
+                        </div>
+                    </form>
+            </div>
+        </div>
+
+        <!-- CHARACTERISTICS -->
+        <div id="char" class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+
+        <!-- NOTES -->
+        <div id="notes" class="row">
+            <div class="col-md-6">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="message">Highlights of Conversation</label>
+                        <textarea type="text" class="form-control" rows="10" id="message"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="message">Additional Notes</label>
+                        <textarea type="text" class="form-control" rows="10" id="message"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+        </div>
+    </div>
+
+<script>
+
+
+    $("#info").show();
+    $("#char").hide();
+    $("#notes").hide();
+
+    $(".view-info").on("click", function () {
+        $("#info").show();
+        $("#char").hide();
+        $("#notes").hide();
+    });
+
+    $(".view-char").on("click", function () {
+        $("#info").hide();
+        $("#char").show();
+        $("#notes").hide();
+    });
+
+    $(".view-notes").on("click", function () {
+        $("#info").hide();
+        $("#char").hide();
+        $("#notes").show();
+    });
+
+</script>

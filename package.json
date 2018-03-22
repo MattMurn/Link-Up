@@ -1,21 +1,22 @@
 {
-  "name": "RightfulPenguins",
+  "name": "modelTest",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MattMurn/RightfulPenguins.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MattMurn/RightfulPenguins/issues"
-  },
-  "homepage": "https://github.com/MattMurn/RightfulPenguins#readme"
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "express-handlebars": "*",
+    "mysql": "*",
+    "mysql2": "*",
+    "sequelize": "*"
+  }
 }

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row" style="margin-top: 25px">
+        <h1 style="text-align: center">First Impressions</h1>
+    </div>
+
+    <div class="row">
+        <div class="input-group" style="width: 50%; margin: 25px auto">
+            <input type="text" class="form-control" placeholder="Enter keyword(s) here">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div>
+    </div>
+
+    <div class="row" style="width: 90%; margin: 0 auto">
+        {{#each contacts}} {{> people/thumbnails }} {{/each}}
+    </div>
+</div>
