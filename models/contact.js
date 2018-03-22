@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     personality: DataTypes.TEXT,
     notes: DataTypes.TEXT
   }, {});
-  // Contact.associate = function(models) {
-  //   Contact.belongsTo(models.Group, {foreignKey: 'groupId', targetKey: 'category'});
+   Contact.associate = function(models) {
+    Contact.belongsTo(models.Group, {foreignKey: 'groupId'});
   //   // associations can be defined here
-  // };
+  };
   return Contact;
 };
