@@ -7,7 +7,7 @@ User Routes:
     delete User
 */
 
-var db = require("../models/contact.js");
+var db = require("../models");
 // this route gets User info and contacts 
 module.exports = function (app) {
     // CONTACT API ROUTES
