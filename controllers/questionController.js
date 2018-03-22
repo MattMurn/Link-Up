@@ -5,32 +5,35 @@ module.exports = function (app) {
 
     app.get("/api/addnew/:id", function (req, res) {
         db.Question.findAll({
-            include: {
-                model: db.Answers,
-            }
+            // include: {
+            //     model: db.Answers,
+            // }
         }).then(function (dataQ) {
             res.json(dataQ);
-            console.log(dataQ);
+            // console.log(dataQ);
         });
     })
     // HTML ROUTES
     app.get("/addnew/:id", function (req, res) {
-        db.Question.findOne({
+        db.Question.findAll({
             where: {
                 id: req.params.id
             }
 
         }).then(function (question) {
-
+            // console.log(question[0].title);
             db.Answers.findAll({
                 where: {
                     questionId: req.params.id
                 }
-            }).then(function (question, Answers) {
-                question.Answers = Answers;
+            }).then(function (Answers) {
+                console.log(Answers);
+                var test = question[0]
+                test.answers =Answers;
+                // question.Answers = Answers;
                     
                 var hbsObj = {
-                    question: question,
+                    question: test,     
                     helpers: {
                         ifCond: function (variable, value, options) {
                           if (variable === value) {
@@ -40,7 +43,7 @@ module.exports = function (app) {
                         }
                       }
                 };
-                
+                // console.log(hbsObj.question);
                 res.render("question", hbsObj);
             });
         });
