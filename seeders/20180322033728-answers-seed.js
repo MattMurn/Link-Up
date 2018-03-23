@@ -5,7 +5,7 @@ module.exports = {
       return queryInterface.bulkInsert('answers', [
         {
             type: 'textShort',
-            text: '', 
+            text: "Enter this person's name here", 
             contactCol: 'name',
             questionId: 1,
             createdAt: new Date(),
@@ -14,7 +14,7 @@ module.exports = {
 
         {
             type: 'textShort',
-            text: '', 
+            text: 'Where you met this person', 
             contactCol: 'location',
             questionId: 2,
             createdAt: new Date(),
@@ -41,7 +41,7 @@ module.exports = {
         },
         {
             type: 'textShort',
-            text: '', 
+            text: "What was ther person's profession", 
             contactCol: 'profession',
             questionId: 4,
             createdAt: new Date(),
@@ -56,7 +56,7 @@ module.exports = {
             updatedAt: new Date()
         },
         {
-            type: 'select',
+            type: 'selectOne',
             text: 'Female', 
             contactCol: 'gender',
             questionId: 5,
@@ -64,16 +64,8 @@ module.exports = {
             updatedAt: new Date()
         },
         {
-            type: 'textShort',
-            text: '', 
-            contactCol: 'gender',
-            questionId: 5,
-            createdAt: new Date(),
-            updatedAt: new Date()
-        },
-        {
             type: 'selectOne',
-            text: '0-18', 
+            text: '0-18: young', 
             contactCol: 'age',
             questionId: 6,
             createdAt: new Date(),
@@ -81,7 +73,7 @@ module.exports = {
         },
         {
             type: 'selectOne',
-            text: '18-39', 
+            text: '19-39: not so young', 
             contactCol: 'age',
             questionId: 6,
             createdAt: new Date(),
@@ -89,7 +81,7 @@ module.exports = {
         },
         {
             type: 'selectOne',
-            text: '40-65', 
+            text: '40-65: old', 
             contactCol: 'age',
             questionId: 6,
             createdAt: new Date(),
@@ -97,7 +89,7 @@ module.exports = {
         },
         {
             type: 'selectOne',
-            text: '65+', 
+            text: '65+: ooooooold', 
             contactCol: 'age',
             questionId: 6,
             createdAt: new Date(),
@@ -121,7 +113,7 @@ module.exports = {
         },
         {
             type: 'selectOne',
-            text: 'meduim', 
+            text: 'medium', 
             contactCol: 'complexion',
             questionId: 7,
             createdAt: new Date(),
@@ -240,16 +232,16 @@ module.exports = {
             updatedAt: new Date()
         },
         {
-            type: 'text',
-            text: '', 
+            type: 'textLong',
+            text: "How would you describe the person's clothing", 
             contactCol: 'clothing',
             questionId: 11,
             createdAt: new Date(),
             updatedAt: new Date()
         },
         {
-            type: 'text',
-            text: '', 
+            type: 'textLong',
+            text: 'What did you talk about, did you have a common interest? Mabye this person had a memorable story you should jot down', 
             contactCol: 'notes',
             questionId: 1,
             createdAt: new Date(),
