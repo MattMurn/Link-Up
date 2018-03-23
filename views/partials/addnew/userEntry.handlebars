@@ -1,13 +1,10 @@
-{{!-- create a container for each field --}}
-{{#each question.answers}}
-    {{!-- form-input-field class is solely for styling purposes --}}
-    <div class="col-offset-md-2 col-offset-sm-1 col-offset-xs-0"></div>
-    <div class="col-md-8 col-sm-10 col-xs-12 form-input-field" option-index={{@index}}>
-        <form>
-            <div class="form-group">
-                <label for=""></label>
-                <textarea rows="{{../numRows}}" id="answer-text" class="form-control" placeholder="{{this.text}}"></textarea>
-            </div>
-        </form>
-    </div>
-{{/each}}
+{{!-- form-input-field class is solely for styling purposes --}}
+<div class="col-offset-md-2 col-offset-sm-1 col-offset-xs-0"></div>
+<div class="col-md-8 col-sm-10 col-xs-12 form-input-field">
+    <form>
+        <div class="form-group">
+            <label for=""></label>
+            <textarea rows="{{numRows}}" id="answer-text" class="form-control" placeholder={{question.answers}}></textarea>
+        </div>
+    </form>
+</div>
