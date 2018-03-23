@@ -68,12 +68,36 @@ function toggleSelected(element, isCheckbox) {
     element.attr("user-selected", selected);
 }
 
+function postAnswerToDatabase() {
+    // Get the question ID
+    var questionId = $("#question-header-text").attr("question-id");
 
+    // Get answers from the page
+    var answer = submitAnswers();
 
+    // Get the loop index to load the next page
+    var questionIndex = $("#question-header-text").attr("question-index");
 
+    // Get the contact ID
+    var contactId = $("#question-header-text").attr("contact-id");
+
+    // Send data to the server
+    $.ajax(`/api/addnew/${questionId}/${answer}/${contactId}`, {
+        type: "POST"
+    }).then(function() {
+
+    });
+}
+
+function loadNextQuestion() {
+
+}
+
+function loadHomePage() {
+
+}
 
 $(document).ready(function() {
-    
 
     // Change the element attribute so it is known which thumbnail(s) are selected
     $("a.thumbnail").click(function() {
@@ -86,39 +110,21 @@ $(document).ready(function() {
         // Toggle user-selected attribute(s) to yes or no
         toggleSelected(element, isCheckbox);
 
-        if ($("#question-header-text").attr("question-type") === "selectOne") {
-            submitAnswers();
-        }
+        // // If this question can only have 1 answer, immediately submit
+        // if ($("#question-header-text").attr("question-type") === "selectOne") {
+        //     submitAnswers();
+        // }
     });
 
     // Submit answers on this page and go to the next question
     $("#next-button").click(function() {
-
-        // Get the question ID
-        var questionId = $("#question-header-text").attr("question-id");
-
-        // Get the loop index to load the next page
-        var questionIndex = $("#question-header-text").attr("question-index");
-
-        // Get the contact ID
-        var contactId = $("#question-header-text").attr("contact-id");
-        
-        // Get answers from the page
-        var answer = submitAnswers();
-
-        // Set ajax url (/api/addnew/questionId/:questionId/contactId/:contactId/answer/:answer)
-        var queryPostUrl = `/api/addnew/questionId/:questionId/contactId/:contactId/answer/:answer`
-
-        // Send data to the server
-        $.ajax(`/api/addnew/questionId/${questionId}/contactId/${contactId}/answer/${answer}`, {
-            type: "POST"
-        }).then(function() {
-
-        })
+        postAnswerToDatabase();
+        loadNextQuestion();
     });
 
     // Submit answers on this page skpi the rest of the questions
     $("#done-button").click(function() {
-        submitAnswers();
+        postAnswerToDatabase();
+        loadHomePage();
     });
 });
