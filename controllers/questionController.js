@@ -26,6 +26,7 @@ module.exports = function (app) {
                     questionId: req.params.id
                 }
             }).then(function (Answers) {
+<<<<<<< HEAD
                 // Create an array of only the answer options
                 var answerArr = [];
                 for (var i = 0; i < Answers.length; i++) {
@@ -40,6 +41,13 @@ module.exports = function (app) {
                     answers: answerArr,
                 }
 
+=======
+                console.log(Answers[0]);
+                var test = question[0]
+                test.answers =Answers;
+                // question.Answers = Answers;
+                    
+>>>>>>> clickEvents
                 var hbsObj = {
                     question: templateDataObj,     
                     helpers: {
