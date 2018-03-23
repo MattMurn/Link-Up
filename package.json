@@ -16,7 +16,7 @@
     "express": "*",
     "express-handlebars": "*",
     "mysql": "*",
-    "mysql2": "*",
+    "mysql2": "^1.5.3",
     "sequelize": "*"
   }
 }
