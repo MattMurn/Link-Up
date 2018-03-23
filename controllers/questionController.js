@@ -27,7 +27,7 @@ module.exports = function (app) {
                     questionId: req.params.id
                 }
             }).then(function (Answers) {
-                console.log(Answers);
+                console.log(Answers[0]);
                 var test = question[0]
                 test.answers =Answers;
                 // question.Answers = Answers;
