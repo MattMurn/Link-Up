@@ -90,7 +90,13 @@ function postAnswerToDatabase() {
 }
 
 function loadNextQuestion() {
+    // Increment question ID for calling next page
+    var nextQuestionId = $("#question-header-text").attr("question-id");
+    nextQuestionId++;
 
+    $.ajax(`/addnew/${nextQuestionId}`, {
+        type: "GET"
+    });
 }
 
 function loadHomePage() {
@@ -118,7 +124,7 @@ $(document).ready(function() {
 
     // Submit answers on this page and go to the next question
     $("#next-button").click(function() {
-        postAnswerToDatabase();
+        // postAnswerToDatabase();
         loadNextQuestion();
     });
 
