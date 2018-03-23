@@ -12,11 +12,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "*",
     "express": "*",
     "express-handlebars": "*",
+    "express-session": "^1.15.6",
+    "express-sessions": "^1.0.6",
     "mysql": "*",
     "mysql2": "^1.5.3",
-    "sequelize": "*"
+    "passport": "^0.4.0",
+    "sequelize": "^4.37.4"
   }
 }

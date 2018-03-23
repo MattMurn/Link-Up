@@ -28,3 +28,8 @@
         margin-bottom: 10px;
         text-align: center;
     }
+
+    form.signup,
+    form.login {
+        margin-top: 50px;
+    }
