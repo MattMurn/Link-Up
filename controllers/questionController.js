@@ -21,19 +21,27 @@ module.exports = function (app) {
             }
 
         }).then(function (question) {
-            // console.log(question[0].title);
             db.Answers.findAll({
                 where: {
                     questionId: req.params.id
                 }
             }).then(function (Answers) {
-                console.log(question);
-                var test = question[0];
-                test.answers =Answers;
-                // question.Answers = Answers;
-                    
+                // Create an array of only the answer options
+                var answerArr = [];
+                for (var i = 0; i < Answers.length; i++) {
+                    answerArr.push(Answers[i].text);
+                }
+                // Create the object that handlebars needs to generate the form
+                var templateDataObj = {
+                    id: question[0].id,
+                    type: question[0].type,
+                    title: question[0].title,
+                    contactCol: question[0].contactCol,
+                    answers: answerArr
+                }
+
                 var hbsObj = {
-                    question: test,     
+                    question: templateDataObj,     
                     helpers: {
                         ifCond: function (variable, value, options) {
                           if (variable === value) {
@@ -43,7 +51,6 @@ module.exports = function (app) {
                         }
                       }
                 };
-                // console.log(hbsObj.question);
                 res.render("question", hbsObj);
             });
         });

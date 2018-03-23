@@ -2,8 +2,8 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-12" id="question-header-text" question-type="{{question.type}}" question-id="{{question.id}}" contact-id="{{question.contactId}}"
-      num-questions={{question.options.length}}>
+    <div class="col-md-12" id="question-header-text" question-type="{{question.type}}" question-id="{{question.id}}" contact-col="{{question.contactCol}}"
+      num-questions={{question.answers.length}}>
       <h1>{{question.title}}</h1>
     </div>
   </div>
@@ -11,11 +11,25 @@
   {{!-- Populate the page with the appropriate template depending on the question type --}} {{!-- 4 types (check, selectOne,
   textShort, and textLong) --}}
   <div class="row answer-thumbnails">
-    {{!-- Load select template with checkboxes --}} {{#ifCond question.type "check"}} {{> addnew/select isCheckbox="yes" }} {{/ifCond}}
-    {{!-- Load select template where only a single answer can be selected --}} {{#ifCond question.type "selectOne"}} {{>
-    addnew/select isCheckbox="no" }} {{/ifCond}} {{!-- Load user entry field with single line input --}} {{#ifCond question.type
-    "textShort"}} {{> addnew/userEntry numRows="1"}} {{/ifCond}} {{!-- Load user entry field with large input area, number
-    of rows is passed in from here --}} {{#ifCond question.type "textLong"}} {{> addnew/userEntry numRows="5"}} {{/ifCond}}
+    {{!-- Load select template with checkboxes --}} 
+    {{#ifCond question.type "check"}} 
+      {{> addnew/select isCheckbox="yes" }}
+    {{/ifCond}}
+
+    {{!-- Load select template where only a single answer can be selected --}} 
+    {{#ifCond question.type "selectOne"}} 
+      {{> addnew/select isCheckbox="no" }}
+    {{/ifCond}}
+    
+    {{!-- Load user entry field with single line input --}} 
+    {{#ifCond question.type "textShort"}} 
+      {{> addnew/userEntry numRows="1"}}
+    {{/ifCond}}
+    
+    {{!-- Load user entry field with large input area, number of rows is passed in from here --}}
+    {{#ifCond question.type "textLong"}}
+      {{> addnew/userEntry numRows="5"}}
+    {{/ifCond}}
 
     <div class="row">
       <div class="col-md-12">
