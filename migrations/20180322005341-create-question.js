@@ -13,6 +13,12 @@ module.exports = {
       // type: {
       //   type: Sequelize.STRING
       // },
+      // title: {
+      //   type: Sequelize.STRING
+      // },
+      // contactCol: {
+      //   type: Sequelize.STRING
+      // }
       // createdAt: {
       //   allowNull: true,
       //   type: Sequelize.DATE,
