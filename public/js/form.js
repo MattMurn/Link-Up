@@ -13,7 +13,10 @@ function submitAnswers() {
     for (var i = 0; i < numQuestions; i++) {
         if (questionType === "check" || questionType === "selectOne") {
             // Get answer(s) for select template
-            answers.push(getAnswersSelect());
+            var newAnswer = getAnswersSelect(i);
+            if (newAnswer != undefined) {
+                answers.push(newAnswer);
+            }
         }
         else if (questionType === "textShort" || questionType === "textLong") {
             // Get answer(s) for userEntry template
@@ -25,7 +28,7 @@ function submitAnswers() {
 }
 
 // Get answer(s) from select tempalte
-function getAnswersSelect(answer) {
+function getAnswersSelect(i) {
     // Get the form-input element
     var thisButton = $(`.form-input-button[option-index=${i}]`);
     
@@ -37,7 +40,7 @@ function getAnswersSelect(answer) {
         var thisIndex = thisButton.attr("option-index");
         
         // Get answer text and store into answer, then return
-        var answer = thisButton.attr("option-index").find(".option-text");
+        var answer = thisButton.find(".option-text").text();
         return answer;
     }
 }
@@ -75,36 +78,19 @@ function postAnswerToDatabase() {
     // Get answers from the page
     var answer = submitAnswers();
 
-    // Get the loop index to load the next page
-    var questionIndex = $("#question-header-text").attr("question-index");
-
     // Get the contact ID
-    var contactId = $("#question-header-text").attr("contact-id");
-
+    var contactCol = $("#question-header-text").attr("contact-col");
+    console.log(`questionId:${questionId}`);
+    console.log(`answer:${answer}`);
+    console.log(`contactCol:${contactCol}`);
     // Send data to the server
-    $.ajax(`/api/addnew/${questionId}/${answer}/${contactId}`, {
+    $.ajax({
+        url: `/api/addnew/${questionId}/${answer}/${contactCol}`,
         type: "POST"
-    }).then(function() {
-
     });
-}
-
-function loadNextQuestion() {
-    // Increment question ID for calling next page
-    var nextQuestionId = $("#question-header-text").attr("question-id");
-    nextQuestionId++;
-
-    $.ajax(`/addnew/${nextQuestionId}`, {
-        type: "GET"
-    });
-}
-
-function loadHomePage() {
-
 }
 
 $(document).ready(function() {
-
     // Change the element attribute so it is known which thumbnail(s) are selected
     $("a.thumbnail").click(function() {
         // Select the container element houseing the thumbnail
@@ -124,13 +110,18 @@ $(document).ready(function() {
 
     // Submit answers on this page and go to the next question
     $("#next-button").click(function() {
-        // postAnswerToDatabase();
-        loadNextQuestion();
+        postAnswerToDatabase();
+
+        // Get current question ID
+        var thisQuestionId = $("#question-header-text").attr("question-id");
+        var nextQuestionId = Number(thisQuestionId) + 1;
+
+        window.location.href = `./${nextQuestionId}`
     });
 
     // Submit answers on this page skpi the rest of the questions
     $("#done-button").click(function() {
         postAnswerToDatabase();
-        loadHomePage();
+        window.location.href = `../`
     });
 });

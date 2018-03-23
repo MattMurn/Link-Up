@@ -37,7 +37,7 @@ module.exports = function (app) {
                     type: question[0].type,
                     title: question[0].title,
                     contactCol: question[0].contactCol,
-                    answers: answerArr
+                    answers: answerArr,
                 }
 
                 var hbsObj = {
