@@ -82,7 +82,7 @@ module.exports = function (app) {
                         where: {
                             id: req.params.id
                         }
-                    },
+                    }
                 ).then(function (dbContact) {
                 res.json(dbContact);
         });
