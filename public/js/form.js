@@ -13,11 +13,14 @@ function submitAnswers() {
     for (var i = 0; i < numQuestions; i++) {
         if (questionType === "check" || questionType === "selectOne") {
             // Get answer(s) for select template
-            answers.push(getAnswersSelect());
+            var newAnswer = getAnswersSelect(i);
+            if (newAnswer != undefined) {
+                answers.push(newAnswer);
+            }
         }
         else if (questionType === "textShort" || questionType === "textLong") {
             // Get answer(s) for userEntry template
-            answers.push(getAnswersUserEntry());
+            answers.push(getAnswersUserEntry(i));
         }
     }
     answers = answers.join();
@@ -25,7 +28,7 @@ function submitAnswers() {
 }
 
 // Get answer(s) from select tempalte
-function getAnswersSelect(answer) {
+function getAnswersSelect(i) {
     // Get the form-input element
     var thisButton = $(`.form-input-button[option-index=${i}]`);
     
@@ -37,14 +40,14 @@ function getAnswersSelect(answer) {
         var thisIndex = thisButton.attr("option-index");
         
         // Get answer text and store into answer, then return
-        var answer = thisButton.attr("option-index").find(".option-text");
+        var answer = thisButton.find(".option-text").text();
         return answer;
     }
 }
 
 // Get answer(s) from userEntry template
-function getAnswersUserEntry() {
-    var answer = $("#answer-text").text();
+function getAnswersUserEntry(i) {
+    var answer = $(`.answer-text[option-index=${i}]`).val();
     return answer;
 }
 
@@ -68,13 +71,27 @@ function toggleSelected(element, isCheckbox) {
     element.attr("user-selected", selected);
 }
 
+function postAnswerToDatabase() {
+    // Get the question ID
+    var questionId = $("#question-header-text").attr("question-id");
 
+    // Get answers from the page
+    var answer = submitAnswers();
 
+    // Get the contact ID
+    var contactCol = $("#question-header-text").attr("contact-col");
 
+    // Get contact ID
+    var contactId = localStorage.getItem("contactId");
+
+    // Send data to the server
+    $.ajax({
+        url: `/api/contacts/${contactId}/${contactCol}/${answer}`,
+        type: "PUT"
+    });
+}
 
 $(document).ready(function() {
-    
-
     // Change the element attribute so it is known which thumbnail(s) are selected
     $("a.thumbnail").click(function() {
         // Select the container element houseing the thumbnail
@@ -86,39 +103,26 @@ $(document).ready(function() {
         // Toggle user-selected attribute(s) to yes or no
         toggleSelected(element, isCheckbox);
 
-        if ($("#question-header-text").attr("question-type") === "selectOne") {
-            submitAnswers();
-        }
     });
 
     // Submit answers on this page and go to the next question
     $("#next-button").click(function() {
-
-        // Get the question ID
-        var questionId = $("#question-header-text").attr("question-id");
-
-        // Get the loop index to load the next page
-        var questionIndex = $("#question-header-text").attr("question-index");
+        console.log('got here');
+        postAnswerToDatabase();
 
         // Get the contact ID
         var contactId = $("#question-header-text").attr("contact-id");
-        
-        // Get answers from the page
-        var answer = submitAnswers();
 
-        // Set ajax url (/api/addnew/questionId/:questionId/contactId/:contactId/answer/:answer)
-        var queryPostUrl = `/api/addnew/questionId/:questionId/contactId/:contactId/answer/:answer`
+        // Get current question ID
+        var thisQuestionId = $("#question-header-text").attr("question-id");
+        var nextQuestionId = Number(thisQuestionId) + 1;
 
-        // Send data to the server
-        $.ajax(`/api/addnew/questionId/${questionId}/contactId/${contactId}/answer/${answer}`, {
-            type: "POST"
-        }).then(function() {
-
-        })
+        window.location.href = `./${nextQuestionId}`
     });
 
     // Submit answers on this page skpi the rest of the questions
     $("#done-button").click(function() {
-        submitAnswers();
+        postAnswerToDatabase();
+        window.location.href = `../`
     });
 });

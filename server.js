@@ -7,18 +7,25 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+var mysql = require("mysql2");
+var session = require("express-session");
+const authRoutes = require('./routes/auth-routes');
+const passportSetup = require('./config/middleware/passport-setup');
+
+var passport = require("passport");
 
 // Sets up the Express App
 // =============================================================
-var app = express();
 var PORT = process.env.PORT || 8080;
-
 // Requiring our models for syncing
 var db = require("./models");
 
+//Creating experss app and configuring middleware needed for authentication
+var app = express();
+
 // Sets up the Express app to handle data parsing
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
@@ -32,16 +39,31 @@ app.set("view engine", "handlebars");
 // Static directory
 app.use(express.static("public"));
 
+//Express sessions is needed to keep track of user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/auth', authRoutes);
+
+//Creating home route
+app.get('/', (req, res) => {
+  res.render('login');
+});
+
 // Routes
 // =============================================================
 require("./controllers/html-routes.js")(app);
 require("./controllers/userController.js")(app);
 require("./controllers/contactController.js")(app);
 require("./controllers/questionController.js")(app);
+require("./controllers/signupController.js")(app);
+require("./controllers/loginController.js")(app);
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function
+db.sequelize.sync({ force: false }).then(function
   () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);

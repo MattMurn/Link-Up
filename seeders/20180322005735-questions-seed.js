@@ -2,14 +2,14 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('questions', [{
-          type: 'textLong',
+          type: 'textShort',
           title: 'Enter a name',
           contactCol: 'name',
           createdAt: new Date(),
           updatedAt: new Date()
       },
       {
-        type: 'text',
+        type: 'textShort',
         title: 'Enter a location',
         contactCol: 'location',
         createdAt: new Date(),
@@ -17,7 +17,7 @@ module.exports = {
   
     },
     {
-        type: 'select',
+        type: 'selectOne',
         title: 'select a category',
         contactCol: 'category',
         createdAt: new Date(),
@@ -31,56 +31,56 @@ module.exports = {
         updatedAt: new Date()
     },
     {
-        type: 'select',
+        type: 'selectOne',
         title: 'Gender',
         contactCol: 'gender',
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
-        type: 'select',
+        type: 'selectOne',
         title: 'Age',
         contactCol: 'age',
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
-        type: 'select',
+        type: 'selectOne',
         title: 'Complexion',
         contactCol: 'complexion',
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
-        type: 'select',
+        type: 'selectOne',
         title: 'build',
         contactCol: 'build',
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
-        type: 'select',
+        type: 'selectOne',
         title: 'height',
         contactCol: 'height',
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
-        type: 'select',
+        type: 'selectOne',
         title: 'hair',
         contactCol: 'hair',
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
-        type: 'text',
+        type: 'textLong',
         title: 'clothing',
         contactCol: 'clothing',
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
-        type: 'text',
+        type: 'textLong',
         title: 'Notes',
         contactCol: 'notes',
         createdAt: new Date(),
