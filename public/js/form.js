@@ -80,9 +80,7 @@ function postAnswerToDatabase() {
 
     // Get the contact ID
     var contactCol = $("#question-header-text").attr("contact-col");
-    console.log(`questionId:${questionId}`);
-    console.log(`answer:${answer}`);
-    console.log(`contactCol:${contactCol}`);
+
     // Send data to the server
     $.ajax({
         url: `/api/addnew/${questionId}/${answer}/${contactCol}`,
@@ -102,15 +100,15 @@ $(document).ready(function() {
         // Toggle user-selected attribute(s) to yes or no
         toggleSelected(element, isCheckbox);
 
-        // // If this question can only have 1 answer, immediately submit
-        // if ($("#question-header-text").attr("question-type") === "selectOne") {
-        //     submitAnswers();
-        // }
     });
 
     // Submit answers on this page and go to the next question
     $("#next-button").click(function() {
+        console.log('got here');
         postAnswerToDatabase();
+
+        // Get the contact ID
+        var contactId = $("#question-header-text").attr("contact-id");
 
         // Get current question ID
         var thisQuestionId = $("#question-header-text").attr("question-id");

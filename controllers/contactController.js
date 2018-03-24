@@ -15,6 +15,7 @@ module.exports = function (app) {
     //get all users
     //route works
     app.get("/api/contacts", function (req, res) {
+        console.log('got here');
         db.Contact.findAll({
 
         }).then(function (dbContact) {
@@ -34,14 +35,15 @@ module.exports = function (app) {
     });
     //create new user
     //works
-    app.post("/api/contacts", function (req, res) {
+    app.post("/api/newcontact", function (req, res) {
         db.Contact.create(req.body).then(function (dbContact) {
-
-            res.json(dbContact);
+            // save ID of new contact
+            var contactId = dbContact.id;
+            res.json(contactId);
         });
     });
     //
-    app.put("/api/contacts/:id", function (req, res) {
+    app.put("/api/contacts/:contactId/:contactCol/:answer", function (req, res) {
         // req.body need to be more specific if user changes
         // just 1 property?
         db.Contact.update(req.body, {

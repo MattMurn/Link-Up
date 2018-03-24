@@ -14,16 +14,16 @@ module.exports = function (app) {
         });
     })
     // HTML ROUTES
-    app.get("/addnew/:id", function (req, res) {
+    app.get("/addnew/:questionId", function (req, res) {
         db.Question.findAll({
             where: {
-                id: req.params.id
+                id: req.params.questionId
             }
 
         }).then(function (question) {
             db.Answers.findAll({
                 where: {
-                    questionId: req.params.id
+                    questionId: req.params.questionId
                 }
             }).then(function (Answers) {
                 // Check if this is the last question
@@ -44,7 +44,8 @@ module.exports = function (app) {
                     title: question[0].title,
                     contactCol: question[0].contactCol,
                     answers: answerArr,
-                    lastQuestion: lastQuestion
+                    lastQuestion: lastQuestion,
+                    contactId: req.params.contactId
                 }
 
                 var hbsObj = {
