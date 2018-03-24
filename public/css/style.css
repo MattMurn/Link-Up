@@ -26,6 +26,17 @@ html, body {
     margin-top: 45px;
 }
 
+.card-name {
+    text-align: center;
+    background-color: #F08A3B;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.card-name > h4 {
+    color: white;
+}
+
 /* Formatting for new person form input */
     #question-header-text {
         text-align: center;
