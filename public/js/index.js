@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#add-contact-button").click(function() {
+    $(".add-btn").click(function() {
         // Create new contact in database
         $.ajax({
             url: "./api/newcontact",
