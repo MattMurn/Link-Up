@@ -11,10 +11,10 @@ var db = require("../models");
 module.exports = function(app) {
     //get all users
     app.get("/api/users", function(req, res){
-        db.User.findAll({
-            where: {
-                id: req.params.id
-            }
+        db.User.findOne({
+            // where: {
+            //     id: req.params.id
+            // }
         }).then(function(dbUser){
             res.json(dbUser);
         })
@@ -30,12 +30,12 @@ module.exports = function(app) {
         });
     });
     //creat new user
-    app.post("/api/user", function(req, res){
+    app.post("/api/users", function(req, res){
         db.User.create(req.body).then(function(dbUser){
             res.json(dbUser);
         });
     });
-    app.put("/api/user/:id", function(req, res){
+    app.put("/api/users/:id", function(req, res){
         // req.body need to be more specific if user changes
         // just 1 property?
         db.User.update(req.body, {

@@ -19,9 +19,12 @@
     "express-handlebars": "*",
     "express-session": "^1.15.6",
     "express-sessions": "^1.0.6",
+    "mongoose": "^5.0.11",
     "mysql": "*",
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.37.4"
   }
 }
