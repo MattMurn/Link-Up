@@ -46,31 +46,32 @@ module.exports = function (app) {
     //     // title will now be 'foooo' but description is the very same as before
     //    })
     app.put("/api/contacts/:id/:contactCol/:answer", function (req, res) {
-        
-        // req.body need to be more specific if user changes
-        // just 1 property?
-        db.Contact.update({
-            firstName: req.params.answer,
-            lastName: req.params.answer,
-            where: req.params.answer,
-            age: req.params.answer,
-            build: req.params.answer,
-            gender: req.params.answer,
-            occupation: req.params.answer,
-            hair: req.params.answer,
-            complexion: req.params.answer,
-            clothing: req.params.answer,
-            personality: req.params.answer,
-            notes: req.params.answer,
-         }, {
-             fields: [`${req.params.contactCol}`]
-         },
-         {
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbContact) {
-            res.json(dbContact);
+        // Store answer from the request
+        var answer = req.params.answer;
+
+        db.Contact.update(
+                    {
+                        firstName: req.params.answer,
+                        lastName: req.params.answer,
+                        where: req.params.answer,
+                        age: req.params.answer,
+                        build: req.params.answer,
+                        gender: req.params.answer,
+                        occupation: req.params.answer,
+                        hair: req.params.answer,
+                        complexion: req.params.answer,
+                        clothing: req.params.answer,
+                        personality: req.params.answer,
+                        notes: req.params.answer
+                    },
+                    {
+                        fields: [`${req.params.contactCol}`],
+                        where: {
+                            id: req.params.id
+                        }
+                    },
+                ).then(function (dbContact) {
+                res.json(dbContact);
         });
     });
     // delete user and associated contacts
