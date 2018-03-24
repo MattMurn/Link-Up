@@ -10,7 +10,7 @@ var bodyParser = require("body-parser");
 var mysql = require("mysql2");
 var session = require("express-session");
 const authRoutes = require('./routes/auth-routes');
-const passportSetup = require('.config/middleware/passport-setup');
+const passportSetup = require('./config/middleware/passport-setup');
 
 var passport = require("passport");
 

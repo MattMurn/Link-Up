@@ -3,7 +3,7 @@ var LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require('passport-google-oauth20');
 const keys = require('./keys');
 
-var db = require("../models");
+var db = require("../../models");
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(new LocalStrategy(
