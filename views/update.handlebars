@@ -1,101 +1,114 @@
 <div class="container">
-        <div class="row" style="margin-bottom: 20px; text-align: center">
-            <ul class="nav nav-pills nav-justified" style="display: inline-block">
-                <li role="presentation" class="active">
-                    <a class="view-info" data-toggle="pill">
-                        <h4>Info</h4>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a class="view-char" data-toggle="pill">
-                        <h4>Characteristics</h4>
-                        <span class="glyphicons glyphicons-user"></span>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a class="view-notes" data-toggle="pill">
-                        <h4>Notes</h4>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- INFO -->
-        <div id="info" class="row">
-            <div class="col-md-6">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" value="{{name}}">
-                    </div>
-            </div>
-            <div class="col-md-6">
-                    <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" value="{{email}}">
-                        </div>
-                    </form>
-            </div>
-        </div>
-
-        <!-- CHARACTERISTICS -->
-        <div id="char" class="row">
-            <div class="col-md-6">
-
-            </div>
-            <div class="col-md-6">
-
-            </div>
-        </div>
-
-        <!-- NOTES -->
-        <div id="notes" class="row">
-            <div class="col-md-6">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="message">Highlights of Conversation</label>
-                        <textarea type="text" class="form-control" rows="10" id="message"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="message">Additional Notes</label>
-                        <textarea type="text" class="form-control" rows="10" id="message"></textarea>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="row">
-            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+    <div class="row" style="margin-bottom: 20px">
+        <div class="col-md-12" style="text-align: center; margin-top: 20px">
+            <h1>Update Link</h1>
         </div>
     </div>
 
-<script>
+    <!-- ROW 1 -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" value="{{contact.firstName}} {{contact.lastName}}">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" value="{{contact.location}}">
+            </div>
 
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" class="form-control" id="category" value="{{contact.category}}">
+            </div>
+        </div>
+    </div>
 
-    $("#info").show();
-    $("#char").hide();
-    $("#notes").hide();
+    <hr>
+    <!-- ROW 2 -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" class="form-control" id="gender" value="{{contact.gender}}">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" id="age" value="{{contact.age}}">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="profession">Profession</label>
+                <input type="text" class="form-control" id="profession" value="{{contact.profession}}">
+            </div>
+        </div>
+    </div>
 
-    $(".view-info").on("click", function () {
-        $("#info").show();
-        $("#char").hide();
-        $("#notes").hide();
-    });
+    {{!-- ROW 3 --}}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="height">Height</label>
+                <input type="text" class="form-control" id="height" value="{{contact.height}}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="complexion">Complexion</label>
+                <input type="text" class="form-control" id="complexion" value="{{contact.complexion}}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="build">Build</label>
+                <input type="text" class="form-control" id="build" value="{{contact.build}}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="hair">Hair</label>
+                <input type="text" class="form-control" id="hair" value="{{contact.hair}}">
+            </div>
+        </div>
 
-    $(".view-char").on("click", function () {
-        $("#info").hide();
-        $("#char").show();
-        $("#notes").hide();
-    });
+    </div>
 
-    $(".view-notes").on("click", function () {
-        $("#info").hide();
-        $("#char").hide();
-        $("#notes").show();
-    });
+    <!-- ROW 4 -->
+    <div class="row">
+        <div class="col-md-6">
+            <form role="form">
+                <div class="form-group">
+                    <label for="clothing">Clothing</label>
+                    <textarea type="text" class="form-control" rows="10" id="clothing" value="{{contact.clothing}}"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form role="form">
+                <div class="form-group">
+                    <label for="addl-notes">Additional Notes</label>
+                    <textarea type="text" class="form-control" rows="10" id="addl-notes" value="{{contact.notes}}"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
 
-</script>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary" style="float:right">Submit</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="../../js/updateForm.js"></script>

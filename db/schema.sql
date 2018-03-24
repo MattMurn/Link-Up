@@ -1,23 +1,53 @@
-/*
-Instructions for getting database up and running on local machine:
- 
-1.) copy/paste the code below in mysql workbench:
+CREATE DATABASE rightful_penguin;
 
-    drop database rightful_penguin;
-    create database rightful_penguin;
-    use rightful_penguin;
+USE rightful_penguin;
 
-2.) make sure development password is correct in config/config.json
+CREATE TABLE Users(
+    id INT NOT NULL AUTO_INCREMENT,
+    firstName VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
+);
 
-=== node commands === 
+CREATE TABLE contacts(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NULL,
+    where VARCHAR(255) NULL,
+    age INT NULL, 
+    build VARCHAR(255) NULL,
+    gender VARCHAR(255) NULL,
+    occupation VARCHAR(255) NULL,
+    hair VARCHAR(255) NULL,
+    complexion VARCHAR(255) NULL,
+    clothing TEXT NULL,
+    notes TEXT NULL,
+    PRIMARY KEY(id)
+);
 
-3.) npm install to get dependencies
-4.) run node server.js - creates tables
-5.) run sequelize db:seed:all - seeds database with info from seeders folder.
+CREATE TABLE groups(
+    id INT NOT NULL AUTO_INCREMENT,
+    category VARCHAR(255) NULL,
+    PRIMARY KEY(id)
+);
 
-=== comments ===
 
-to re seed db, just repeat but skip steps 2 & 3.
+CREATE TABLE Questions(
+    id INT NOT NULL AUTO_INCREMENT,
+    type VARCHAR(255) NOT NULL, 
+    title VARCHAR(255) NULL, 
+    contactCol VARCHAR(255) NULL,  
+    PRIMARY KEY(id)
 
--- still working on the associations
-*/
+)
+
+CREATE TABLE Answers(
+    id INT NOT NULL AUTO_INCREMENT,
+    type VARCHAR(255) NOT NULL, 
+    title VARCHAR(255) NULL, 
+    contactCol VARCHAR(255) NULL,  
+    questionId INT NOT NULL,
+    PRIMARY KEY(id)
+
+)

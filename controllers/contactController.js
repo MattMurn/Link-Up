@@ -46,31 +46,45 @@ module.exports = function (app) {
     //     // title will now be 'foooo' but description is the very same as before
     //    })
     app.put("/api/contacts/:id/:contactCol/:answer", function (req, res) {
-        
-        // req.body need to be more specific if user changes
-        // just 1 property?
-        db.Contact.update({
-            firstName: req.params.answer,
-            lastName: req.params.answer,
-            where: req.params.answer,
-            age: req.params.answer,
-            build: req.params.answer,
-            gender: req.params.answer,
-            occupation: req.params.answer,
-            hair: req.params.answer,
-            complexion: req.params.answer,
-            clothing: req.params.answer,
-            personality: req.params.answer,
-            notes: req.params.answer,
-         }, {
-             fields: [`${req.params.contactCol}`]
-         },
-         {
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbContact) {
-            res.json(dbContact);
+        // Store answer from the request
+        var answer = req.params.answer;
+        var firstName = "";
+        var lastName = "";
+
+        var columnUpdate = req.params.contactCol;
+
+        // Special logic for name
+        if (req.params.contactCol = "name") {
+            var answerArr = req.params.answer.split;
+            firstName = answerArr[0];
+            lastName = answerArr[1];
+
+            columnUpdate = ['firstName', 'lastName'];
+        }
+
+        db.Contact.update(
+                    {
+                        firstName: firstName,
+                        lastName: lastName,
+                        where: req.params.answer,
+                        age: req.params.answer,
+                        build: req.params.answer,
+                        gender: req.params.answer,
+                        occupation: req.params.answer,
+                        hair: req.params.answer,
+                        complexion: req.params.answer,
+                        clothing: req.params.answer,
+                        personality: req.params.answer,
+                        notes: req.params.answer
+                    },
+                    {
+                        fields: [`${columnUpdate}`],
+                        where: {
+                            id: req.params.id
+                        }
+                    },
+                ).then(function (dbContact) {
+                res.json(dbContact);
         });
     });
     // delete user and associated contacts
@@ -104,6 +118,7 @@ module.exports = function (app) {
                 id: req.params.id
             }
         }).then(function (dbContact) {
+            console.log(dbContact.where);
             var hbsObj = {
                 contact: dbContact
             };
