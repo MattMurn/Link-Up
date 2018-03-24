@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    //click handlers for the homepage.
     $('#add-link').on('click', function(){
         console.log("add link");
         $.get('/addnew/1').then(function(data){
@@ -9,7 +9,6 @@ $(document).ready(function() {
           });
 
     });
-
 
 
     $('#view-links').on('click', function(){

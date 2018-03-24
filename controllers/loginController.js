@@ -9,7 +9,7 @@ module.exports = function (app) {
 
 
 app.post('/login', 
-  passport.authenticate('local', {successRedirect: '/index', failureRedirect: '/signup' }),
+  passport.authenticate('local', {successRedirect: '/homepage', failureRedirect: '/signup' }),
   function(req, res) {
     console.log('route hit');
 

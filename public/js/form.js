@@ -2,7 +2,7 @@
 function submitAnswers() {
     // Get the number of possible answers for this page
     var numQuestions = $("#question-header-text").attr("num-questions");
-
+    
     // Declare array for storing answers
     var answers = [];
     
