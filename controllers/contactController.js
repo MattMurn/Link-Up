@@ -104,6 +104,7 @@ module.exports = function (app) {
                 id: req.params.id
             }
         }).then(function (dbContact) {
+            console.log(dbContact.where);
             var hbsObj = {
                 contact: dbContact
             };
