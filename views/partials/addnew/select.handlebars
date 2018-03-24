@@ -2,7 +2,7 @@
 {{#each question.answers }}
     {{!-- form-input-button class is solely for styling purposes --}}
     {{!-- "option-index" is used to relate the clicked button back to the option in the question object. The @index handlebar helper is used to enter the index of the loop for this purpose --}}
-    <div class="col-md-4 col-sm-6 col-xs-12 form-input-button" option-index={{@index}} is-checkbox="{{../isCheckbox}}" user-selected="no">
+    <div class="col-md-4 col-sm-6 col-xs-12 form-input-button" option-index={{@index}} is-checkbox="{{../isCheckbox}}" user-selected="no" style="margin: 0 auto">
         <a href="#" class="thumbnail">
             <h2 class="option-text">{{this}}</h2>
         </a>

@@ -10,40 +10,26 @@
 
   {{!-- Populate the page with the appropriate template depending on the question type --}} {{!-- 4 types (check, selectOne,
   textShort, and textLong) --}}
-  <div class="row">
-  <div class="col-md-12" style="text-align: center">
+
+
   <div class="row answer-thumbnails">
-    {{!-- Load select template with checkboxes --}} 
-    {{#ifCond question.type "check"}} 
-      {{> addnew/select isCheckbox="yes" }}
-    {{/ifCond}}
+    <div class="col-md-12" style="text-align: center; margin: 0 auto"></div>
+    {{!-- Load select template with checkboxes --}} {{#ifCond question.type "check"}} {{> addnew/select isCheckbox="yes" }} {{/ifCond}}
+    {{!-- Load select template where only a single answer can be selected --}} {{#ifCond question.type "selectOne"}} {{>
+    addnew/select isCheckbox="no" }} {{/ifCond}} {{!-- Load user entry field with single line input --}} {{#ifCond question.type
+    "textShort"}} {{> addnew/userEntry numRows="1"}} {{/ifCond}} {{!-- Load user entry field with large input area, number
+    of rows is passed in from here --}} {{#ifCond question.type "textLong"}} {{> addnew/userEntry numRows="5"}} {{/ifCond}}
+  </div>
 
-    {{!-- Load select template where only a single answer can be selected --}} 
-    {{#ifCond question.type "selectOne"}} 
-      {{> addnew/select isCheckbox="no" }}
-    {{/ifCond}}
-    
-    {{!-- Load user entry field with single line input --}} 
-    {{#ifCond question.type "textShort"}} 
-      {{> addnew/userEntry numRows="1"}}
-    {{/ifCond}}
-    
-    {{!-- Load user entry field with large input area, number of rows is passed in from here --}}
-    {{#ifCond question.type "textLong"}}
-      {{> addnew/userEntry numRows="5"}}
-    {{/ifCond}}
-    </div>
-    </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12" style:"float:right">
-        {{#ifCond question.lastQuestion false }}
-          <button type="button" class="btn btn-primary" id="next-button">Next</button>
-        {{/ifCond}}
-        <button type="button" class="btn btn-danger" id="done-button">Done</button>
-      </div>
+  <div class="row">
+    <div class="col-md-12" style="text-align: center">
+      {{#ifCond question.lastQuestion false }}
+      <button type="button" class="btn btn-primary" id="next-button">Next</button>
+      {{/ifCond}}
+      <button type="button" class="btn btn-danger" id="done-button">Done</button>
     </div>
+  </div>
 </div>
 
 <script src="../../js/form.js"></script>
