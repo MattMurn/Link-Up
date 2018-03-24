@@ -26,7 +26,12 @@ module.exports = function (app) {
                     questionId: req.params.id
                 }
             }).then(function (Answers) {
-<<<<<<< HEAD
+                // Check if this is the last question
+                var lastQuestionId = 12;
+                var lastQuestion = false;
+                if (question[0].id === 12) {
+                    lastQuestion = true;
+                }
                 // Create an array of only the answer options
                 var answerArr = [];
                 for (var i = 0; i < Answers.length; i++) {
@@ -39,15 +44,9 @@ module.exports = function (app) {
                     title: question[0].title,
                     contactCol: question[0].contactCol,
                     answers: answerArr,
+                    lastQuestion: lastQuestion
                 }
 
-=======
-                console.log(Answers[0]);
-                var test = question[0]
-                test.answers =Answers;
-                // question.Answers = Answers;
-                    
->>>>>>> clickEvents
                 var hbsObj = {
                     question: templateDataObj,     
                     helpers: {
