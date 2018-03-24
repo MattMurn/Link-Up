@@ -20,7 +20,7 @@ function submitAnswers() {
         }
         else if (questionType === "textShort" || questionType === "textLong") {
             // Get answer(s) for userEntry template
-            answers.push(getAnswersUserEntry());
+            answers.push(getAnswersUserEntry(i));
         }
     }
     answers = answers.join();
@@ -46,8 +46,8 @@ function getAnswersSelect(i) {
 }
 
 // Get answer(s) from userEntry template
-function getAnswersUserEntry() {
-    var answer = $("#answer-text").text();
+function getAnswersUserEntry(i) {
+    var answer = $(`.answer-text[option-index=${i}]`).val();
     return answer;
 }
 
@@ -80,13 +80,14 @@ function postAnswerToDatabase() {
 
     // Get the contact ID
     var contactCol = $("#question-header-text").attr("contact-col");
-    console.log(`questionId:${questionId}`);
-    console.log(`answer:${answer}`);
-    console.log(`contactCol:${contactCol}`);
+
+    // Get contact ID
+    var contactId = localStorage.getItem("contactId");
+
     // Send data to the server
     $.ajax({
-        url: `/api/addnew/${questionId}/${answer}/${contactCol}`,
-        type: "POST"
+        url: `/api/contacts/${contactId}/${contactCol}/${answer}`,
+        type: "PUT"
     });
 }
 
@@ -102,15 +103,15 @@ $(document).ready(function() {
         // Toggle user-selected attribute(s) to yes or no
         toggleSelected(element, isCheckbox);
 
-        // // If this question can only have 1 answer, immediately submit
-        // if ($("#question-header-text").attr("question-type") === "selectOne") {
-        //     submitAnswers();
-        // }
     });
 
     // Submit answers on this page and go to the next question
     $("#next-button").click(function() {
+        console.log('got here');
         postAnswerToDatabase();
+
+        // Get the contact ID
+        var contactId = $("#question-header-text").attr("contact-id");
 
         // Get current question ID
         var thisQuestionId = $("#question-header-text").attr("question-id");

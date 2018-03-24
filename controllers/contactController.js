@@ -34,17 +34,38 @@ module.exports = function (app) {
     });
     //create new user
     //works
-    app.post("/api/contacts", function (req, res) {
+    app.post("/api/newcontact", function (req, res) {
         db.Contact.create(req.body).then(function (dbContact) {
-
-            res.json(dbContact);
+            // save ID of new contact
+            var contactId = dbContact.id;
+            res.json(contactId);
         });
     });
     //
-    app.put("/api/contacts/:id", function (req, res) {
+    // task.update({ title: 'foooo', description: 'baaaaaar'}, {fields: ['title']}).then(() => {
+    //     // title will now be 'foooo' but description is the very same as before
+    //    })
+    app.put("/api/contacts/:id/:contactCol/:answer", function (req, res) {
+        
         // req.body need to be more specific if user changes
         // just 1 property?
-        db.Contact.update(req.body, {
+        db.Contact.update({
+            firstName: req.params.answer,
+            lastName: req.params.answer,
+            where: req.params.answer,
+            age: req.params.answer,
+            build: req.params.answer,
+            gender: req.params.answer,
+            occupation: req.params.answer,
+            hair: req.params.answer,
+            complexion: req.params.answer,
+            clothing: req.params.answer,
+            personality: req.params.answer,
+            notes: req.params.answer,
+         }, {
+             fields: [`${req.params.contactCol}`]
+         },
+         {
             where: {
                 id: req.params.id
             }

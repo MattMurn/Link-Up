@@ -5,13 +5,20 @@ module.exports = {
       return queryInterface.bulkInsert('answers', [
         {
             type: 'textShort',
-            text: "Enter this person's name here", 
+            text: "First", 
             contactCol: 'name',
             questionId: 1,
             createdAt: new Date(),
             updatedAt: new Date()
         },
-
+        {
+            type: 'textShort',
+            text: "Last", 
+            contactCol: 'name',
+            questionId: 1,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        },
         {
             type: 'textShort',
             text: 'Where you met this person', 
@@ -243,7 +250,7 @@ module.exports = {
             type: 'textLong',
             text: 'What did you talk about, did you have a common interest? Mabye this person had a memorable story you should jot down', 
             contactCol: 'notes',
-            questionId: 1,
+            questionId: 12,
             createdAt: new Date(),
             updatedAt: new Date()
         }
