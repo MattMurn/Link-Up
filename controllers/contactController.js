@@ -97,7 +97,7 @@ module.exports = function (app) {
             }
         }).then(function (dbContact) {
             res.json(dbContact);
-        })
+        });
     })
 
 
@@ -124,5 +124,5 @@ module.exports = function (app) {
             };
             res.render("update", hbsObj);
         });
-    })
+    });
 };
