@@ -6,7 +6,16 @@ $(document).ready(function() {
   
     // When the form is submitted, we validate there's an email and password entered
     loginForm.on("submit", function(event) {
+
       event.preventDefault();
+      // var param = emailInput.val().trim();
+      // $.get(`/api/users/:id`, param).then(function(data) {
+      //   // for(var i= 0; i < data.length; i++){
+      //   //   console.log(data[i].email);
+      //   // };
+      //   console.log(param);
+      //   console.log(data);
+      // });
       var userData = {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
@@ -21,16 +30,13 @@ $(document).ready(function() {
       emailInput.val("");
       passwordInput.val("");
     });
-  
+    
     // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
     function loginUser(email, password) {
       $.post("/api/login", {
         email: email,
         password: password
-      }).then(function(data) {
-        window.location.replace(data);
-        // If there's an error, log the error
-      }).catch(function(err) {
+      }).then(window.location.href='/').catch(function(err) {
         console.log(err);
       });
     }

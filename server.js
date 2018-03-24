@@ -48,7 +48,7 @@ require("./controllers/html-routes.js")(app);
 require("./controllers/userController.js")(app);
 require("./controllers/contactController.js")(app);
 require("./controllers/questionController.js")(app);
-require("./controllers/accountController.js")(app);
+require("./controllers/signupController.js")(app);
 require("./controllers/loginController.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
