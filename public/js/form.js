@@ -72,21 +72,18 @@ function toggleSelected(element, isCheckbox) {
 }
 
 function postAnswerToDatabase() {
-    // Get the question ID
-    var questionId = $("#question-header-text").attr("question-id");
+    // Get contact ID
+    var contactId = localStorage.getItem("contactId");
+    
+    // Get the contact column name
+    var contactCol = $("#question-header-text").attr("contact-col");
 
     // Get answers from the page
     var answer = submitAnswers();
 
-    // Get the contact ID
-    var contactCol = $("#question-header-text").attr("contact-col");
-
-    // Get contact ID
-    var contactId = localStorage.getItem("contactId");
-
     // Send data to the server
     $.ajax({
-        url: `/api/contacts/${contactId}/${contactCol}/${answer}`,
+        url: `./../../api/contacts/${contactId}/${contactCol}/${answer}`,
         type: "PUT"
     });
 }

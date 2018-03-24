@@ -22,7 +22,7 @@ module.exports = {
         {
             type: 'textShort',
             text: 'Where you met this person', 
-            contactCol: 'location',
+            contactCol: 'where',
             questionId: 2,
             createdAt: new Date(),
             updatedAt: new Date()
