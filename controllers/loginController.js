@@ -1,4 +1,5 @@
 var db = require('../models');
+var passport = require('passport')
 module.exports = function (app) {
 
 app.get("/login", function(req, res){
@@ -16,5 +17,10 @@ app.get("/login", function(req, res){
 //     res.json(data);
 //   })
 // });
-
+app.post('/login', 
+  passport.authenticate('local', {successRedirect: '/index', failureRedirect: '/signup' }),
+  function(req, res) {
+    console.log('route hit');
+    res.render('index');
+  });
 }

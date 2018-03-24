@@ -20,7 +20,10 @@ $(document).ready(function() {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
       };
-  
+      console.log(userData.email);
+      console.log(userData.password);
+      console.log(window.location);
+      
       if (!userData.email || !userData.password) {
         return;
       }
@@ -36,10 +39,14 @@ $(document).ready(function() {
       $.post("/api/login", {
         email: email,
         password: password
-      }).then(window.location.href='/').catch(function(err) {
+      }).then(function(data) {
+        window.location.replace(data);
+        console.log(data);
+        // If there's an error, log the error
+      }).catch(function(err) {
         console.log(err);
       });
-    }
+    };  
   
   });
   
