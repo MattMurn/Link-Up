@@ -9,6 +9,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mysql = require("mysql2");
 var session = require("express-session");
+const authRoutes = require('./routes/auth-routes');
+const passportSetup = require('.config/middleware/passport-setup');
 
 var passport = require("passport");
 
@@ -41,6 +43,12 @@ app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use('/auth', authRoutes);
+
+//Creating home route
+app.get('/', (req, res) => {
+  res.render('home');
+});
 
 // Routes
 // =============================================================
