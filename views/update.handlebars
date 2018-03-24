@@ -1,6 +1,8 @@
 <div class="container">
-    <div class="row" style="margin-bottom: 20px; text-align: center">
-        <h1>Update Link</h1>
+    <div class="row" style="margin-bottom: 20px">
+        <div class="col-md-12" style="text-align: center; margin-top: 20px">
+            <h1>Update Link</h1>
+        </div>
     </div>
 
     <!-- ROW 1 -->
@@ -19,13 +21,14 @@
 
         </div>
         <div class="col-md-4">
-                        <div class="form-group">
+            <div class="form-group">
                 <label for="category">Category</label>
                 <input type="text" class="form-control" id="category" value="{{contact.category}}">
             </div>
         </div>
     </div>
 
+    <hr>
     <!-- ROW 2 -->
     <div class="row">
         <div class="col-md-4">
@@ -35,45 +38,63 @@
             </div>
         </div>
         <div class="col-md-4">
-                        <div class="form-group">
+            <div class="form-group">
                 <label for="age">Age</label>
                 <input type="text" class="form-control" id="age" value="{{contact.age}}">
             </div>
         </div>
         <div class="col-md-4">
-                        <div class="form-group">
+            <div class="form-group">
                 <label for="profession">Profession</label>
                 <input type="text" class="form-control" id="profession" value="{{contact.profession}}">
             </div>
         </div>
     </div>
 
-{{!-- ROW 3 --}}
- <div class="row">
+    {{!-- ROW 3 --}}
+    <div class="row">
         <div class="col-md-3">
-            <div class="col-md-3">
+            <div class="form-group">
+                <label for="height">Height</label>
+                <input type="text" class="form-control" id="height" value="{{contact.height}}">
             </div>
-            <div class="col-md-3"></div>
-        
         </div>
-       
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="complexion">Complexion</label>
+                <input type="text" class="form-control" id="complexion" value="{{contact.complexion}}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="build">Build</label>
+                <input type="text" class="form-control" id="build" value="{{contact.build}}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="hair">Hair</label>
+                <input type="text" class="form-control" id="hair" value="{{contact.hair}}">
+            </div>
+        </div>
+
     </div>
 
     <!-- ROW 4 -->
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <form role="form">
                 <div class="form-group">
-                    <label for="message">Highlights of Conversation</label>
-                    <textarea type="text" class="form-control" rows="10" id="message"></textarea>
+                    <label for="clothing">Clothing</label>
+                    <textarea type="text" class="form-control" rows="10" id="clothing" value="{{contact.clothing}}"></textarea>
                 </div>
             </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <form role="form">
                 <div class="form-group">
-                    <label for="message">Additional Notes</label>
-                    <textarea type="text" class="form-control" rows="10" id="message"></textarea>
+                    <label for="addl-notes">Additional Notes</label>
+                    <textarea type="text" class="form-control" rows="10" id="addl-notes" value="{{contact.notes}}"></textarea>
                 </div>
             </form>
         </div>
@@ -83,9 +104,11 @@
     </div>
 
     <div class="row">
-        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary" style="float:right">Submit</button>
+        </div>
     </div>
-  
+
 </div>
 
 <script src="../../js/updateForm.js"></script>
