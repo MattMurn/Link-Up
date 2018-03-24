@@ -15,7 +15,6 @@ module.exports = function (app) {
     //get all users
     //route works
     app.get("/api/contacts", function (req, res) {
-        console.log('got here');
         db.Contact.findAll({
 
         }).then(function (dbContact) {
@@ -43,10 +42,30 @@ module.exports = function (app) {
         });
     });
     //
-    app.put("/api/contacts/:contactId/:contactCol/:answer", function (req, res) {
+    // task.update({ title: 'foooo', description: 'baaaaaar'}, {fields: ['title']}).then(() => {
+    //     // title will now be 'foooo' but description is the very same as before
+    //    })
+    app.put("/api/contacts/:id/:contactCol/:answer", function (req, res) {
+        
         // req.body need to be more specific if user changes
         // just 1 property?
-        db.Contact.update(req.body, {
+        db.Contact.update({
+            firstName: req.params.answer,
+            lastName: req.params.answer,
+            where: req.params.answer,
+            age: req.params.answer,
+            build: req.params.answer,
+            gender: req.params.answer,
+            occupation: req.params.answer,
+            hair: req.params.answer,
+            complexion: req.params.answer,
+            clothing: req.params.answer,
+            personality: req.params.answer,
+            notes: req.params.answer,
+         }, {
+             fields: [`${req.params.contactCol}`]
+         },
+         {
             where: {
                 id: req.params.id
             }

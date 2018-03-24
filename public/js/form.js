@@ -20,7 +20,7 @@ function submitAnswers() {
         }
         else if (questionType === "textShort" || questionType === "textLong") {
             // Get answer(s) for userEntry template
-            answers.push(getAnswersUserEntry());
+            answers.push(getAnswersUserEntry(i));
         }
     }
     answers = answers.join();
@@ -46,8 +46,8 @@ function getAnswersSelect(i) {
 }
 
 // Get answer(s) from userEntry template
-function getAnswersUserEntry() {
-    var answer = $("#answer-text").text();
+function getAnswersUserEntry(i) {
+    var answer = $(`.answer-text[option-index=${i}]`).val();
     return answer;
 }
 
@@ -81,10 +81,13 @@ function postAnswerToDatabase() {
     // Get the contact ID
     var contactCol = $("#question-header-text").attr("contact-col");
 
+    // Get contact ID
+    var contactId = localStorage.getItem("contactId");
+
     // Send data to the server
     $.ajax({
-        url: `/api/addnew/${questionId}/${answer}/${contactCol}`,
-        type: "POST"
+        url: `/api/contacts/${contactId}/${contactCol}/${answer}`,
+        type: "PUT"
     });
 }
 
