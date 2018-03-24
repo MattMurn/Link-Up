@@ -3,7 +3,7 @@
         <div class="col-xl-4"></div>
         <div class="col-xl-4" style="height: 20vh">
 
-        {{> index/newPerson}}
+        {{!-- {{> index/newPerson}} --}}
 
         {{> index/title}}
 
@@ -15,7 +15,7 @@
         <div class="col-xl-4"></div>
         <div class="col-xl-4">
 
-            <button type="button" class="btn btn-info" style="border-radius: 50%; height: 40vh; width: 40vh; margin: 30px 0">
+            <button id="add-link" type="button" class="btn btn-info">
                 <i style="height: 40%" class="fas fa-user-plus fa-10x"></i>
                 <h4 style="margin: 0">Add a Person</h4>
             </button>
@@ -28,22 +28,21 @@
     <div class="row"></div>
 
     <div class="row">
-        <div class="col-xl-4"></div>
-        <div class="col-xl-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
 
             <div class="row contacts">
-                <button id="view-links" type="button" class="btn btn-warning" style="width: 50vh; margin-top: 45px">
+                <button id="view-links" type="button" class="btn btn-warning">
                     <h3>View My Links</h3>
                 </button>
             </div>
 
         </div>
-        <div class="col-xl-4"></div>
+        <div class="col-md-4"></div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 30px">Logout</div>
     </div>
 
 </div>
-
-<script>
-    $(".view-links").
-</script>

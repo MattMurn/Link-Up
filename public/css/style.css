@@ -5,6 +5,21 @@ background-color: lightgray;
 .container {
     background-color: white;
     height: 100vh;
+    vertical-align: middle;
+    box-shadow: 0px 0px 50px grey;
+}
+
+#add-link {
+    border-radius: 50%;
+    height: 40vh;
+    width: 40vh;
+    margin: 30px auto;
+}
+
+#view-links {
+    width: 80vh; 
+    margin: 0 auto;
+    margin-top: 45px;
 }
 
 /* Formatting for new person form input */
