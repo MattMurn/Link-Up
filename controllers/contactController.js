@@ -41,7 +41,7 @@ module.exports = function (app) {
             res.json(contactId);
         });
     });
-    //
+    // Update a record in the database from one of the form entries
     // task.update({ title: 'foooo', description: 'baaaaaar'}, {fields: ['title']}).then(() => {
     //     // title will now be 'foooo' but description is the very same as before
     //    })
@@ -49,6 +49,8 @@ module.exports = function (app) {
         
         // req.body need to be more specific if user changes
         // just 1 property?
+        var key = req.params.contactCol;
+        var value = req.params.answer;
         db.Contact.update({
             firstName: req.params.answer,
             lastName: req.params.answer,
@@ -62,7 +64,8 @@ module.exports = function (app) {
             clothing: req.params.answer,
             personality: req.params.answer,
             notes: req.params.answer,
-         }, {
+         }, 
+         {
              fields: [`${req.params.contactCol}`]
          },
          {

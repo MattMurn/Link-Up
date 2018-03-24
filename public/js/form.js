@@ -86,8 +86,8 @@ function postAnswerToDatabase() {
 
     // Send data to the server
     $.ajax({
-        url: `/api/contacts/${contactId}/${contactCol}/${answer}`,
-        type: "PUT"
+        url: `/api/contacts/${contactId}/${contactCol}/${answer.stringify()}`,
+        type: "Put"
     });
 }
 
