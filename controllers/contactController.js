@@ -48,11 +48,24 @@ module.exports = function (app) {
     app.put("/api/contacts/:id/:contactCol/:answer", function (req, res) {
         // Store answer from the request
         var answer = req.params.answer;
+        var firstName = "";
+        var lastName = "";
+
+        var columnUpdate = req.params.contactCol;
+
+        // Special logic for name
+        if (req.params.contactCol = "name") {
+            var answerArr = req.params.answer.split;
+            firstName = answerArr[0];
+            lastName = answerArr[1];
+
+            columnUpdate = ['firstName', 'lastName'];
+        }
 
         db.Contact.update(
                     {
-                        firstName: req.params.answer,
-                        lastName: req.params.answer,
+                        firstName: firstName,
+                        lastName: lastName,
                         where: req.params.answer,
                         age: req.params.answer,
                         build: req.params.answer,
@@ -65,7 +78,7 @@ module.exports = function (app) {
                         notes: req.params.answer
                     },
                     {
-                        fields: [`${req.params.contactCol}`],
+                        fields: [`${columnUpdate}`],
                         where: {
                             id: req.params.id
                         }
