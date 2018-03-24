@@ -123,6 +123,6 @@ $(document).ready(function() {
     // Submit answers on this page skpi the rest of the questions
     $("#done-button").click(function() {
         postAnswerToDatabase();
-        window.location.href = `../`
+        window.location.href = `/homepage`
     });
 });

@@ -47,7 +47,7 @@ app.use('/auth', authRoutes);
 
 //Creating home route
 app.get('/', (req, res) => {
-  res.render('addnew/1');
+  res.render('login');
 });
 
 // Routes

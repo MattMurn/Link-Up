@@ -10,6 +10,7 @@ module.exports = function (app) {
             // }
         }).then(function (dataQ) {
             res.json(dataQ);
+
             // console.log(dataQ);
         });
     })
