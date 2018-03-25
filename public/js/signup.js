@@ -34,7 +34,7 @@ $(document).ready(function() {
         firstName: firstName,
         lastName: lastName,
         password: password
-      }).then(window.location.href = "/").catch(handleLoginErr);
+      }).then(window.location.href = "/homepage").catch(handleLoginErr);
     }
   
     function handleLoginErr(err) {
