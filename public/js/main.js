@@ -1,5 +1,13 @@
 $(document).ready(function() {
     //click handlers for the homepage.
+    
+    
+    $.get("/api/login").then(function(data) {
+      
+    //this will allow the user id or any user information to persist to the homepage.  
+      console.log(data.email);
+    });
+    
     $('#add-link').on('click', function(){
         console.log("add link");
         $.post(`./api/newcontact`).then(function(response){
@@ -25,3 +33,7 @@ $(document).ready(function() {
         })
     })
 });
+
+$(document).ready(function() {
+
+  });
