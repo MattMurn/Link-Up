@@ -3,11 +3,11 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-    app.get("/api/addnew/:id", function (req, res) {
+    app.get("/api/addnew", function (req, res) {
         db.Question.findAll({
-            // include: {
-            //     model: db.Answers,
-            // }
+            include: {
+                model: db.Answers,
+            }
         }).then(function (dataQ) {
             res.json(dataQ);
 

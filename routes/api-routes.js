@@ -24,7 +24,7 @@ module.exports = function(app) {
       email: req.body.email,
       password: req.body.password
     }).then(function() {
-      res.redirect(307, "/api/login");
+      res.redirect(307, "/homepage");
     }).catch(function(err) {
       console.log(err);
       res.json(err);
@@ -38,24 +38,5 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
-  // Route for getting some data about our user to be used client side
-  app.get("api/users", function(req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-      console.log("empty data");
-    }
-   // there is the difference in the users api / user_data api and the login api. 
-   // go through and get the routes that pertain to each move, then get rid of the non important ones.
-    else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
-      console.log(req.user);
-    }
-  });
 
 };

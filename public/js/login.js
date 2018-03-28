@@ -8,21 +8,11 @@ $(document).ready(function() {
     loginForm.on("submit", function(event) {
 
       event.preventDefault();
-      // var param = emailInput.val().trim();
-      // $.get(`/api/users/:id`, param).then(function(data) {
-      //   // for(var i= 0; i < data.length; i++){
-      //   //   console.log(data[i].email);
-      //   // };
-      //   console.log(param);
-      //   console.log(data);
-      // });
+      
       var userData = {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
       };
-      // console.log(userData.email);
-      // console.log(userData.password);
-      // console.log(window.location);
       
       if (!userData.email || !userData.password) {
         return;

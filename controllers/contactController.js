@@ -1,12 +1,4 @@
 
-/*
-User Routes: 
-    get User
-    get specific User
-    update User
-    delete User
-*/
-
 var db = require("../models");
 // this route gets User info and contacts 
 module.exports = function (app) {
@@ -63,7 +55,7 @@ module.exports = function (app) {
                     {
                         firstName: firstName,
                         lastName: lastName,
-                        where: req.params.answer,
+                        loc: req.params.answer,
                         age: req.params.answer,
                         build: req.params.answer,
                         gender: req.params.answer,

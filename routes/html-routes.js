@@ -1,15 +1,8 @@
-// *********************************************************************************
-// html-routes.js - this file offers a set of routes for sending users to the various html pages
-// *********************************************************************************
 
-// Dependencies
-// =============================================================
 var path = require("path");
 
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-// Routes
-// =============================================================
 module.exports = function(app) {
   // Get code for looping through questions when adding a contact
   var addContact = require(path.join(__dirname, "../public/js/addContact"));
@@ -31,12 +24,6 @@ module.exports = function(app) {
 
   });
 
-  app.get("/index", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-  });
 
   app.get("/api/login", function(req, res) {
     // If the user already has an account send them to the members page
@@ -47,10 +34,25 @@ module.exports = function(app) {
 
   });
 
-  // Here we've add our isAuthenticated middleware to this route.
+
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/homepage", isAuthenticated, function(req, res) {
       res.render("homepage");
+
+  });
+  // testing this route to get questions and answers in 1 db query.
+  app.get("/api/addNew", function(req, res){
+    console.log("HTML ROUTE HIT");
+    console.log(req);
+  });
+
+  // app.get("/", function (req, res) {
+  //   res.render("index");
+
+  // });
+// render homepage
+  app.get("/homepage", function (req, res) {
+    res.render("homepage");
 
   });
 

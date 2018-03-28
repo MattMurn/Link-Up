@@ -13,7 +13,14 @@ module.exports = {
         lastName: 'Jon',
         createdAt: new Date(),
         updatedAt: new Date() 
-      }], {});
+      },
+      {
+        firstName: 'Ludacris',
+        lastName: '',
+        createdAt: new Date(),
+        updatedAt: new Date() 
+      }
+    ], {});
     
   },
 

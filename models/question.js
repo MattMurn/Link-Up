@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     contactCol: DataTypes.STRING 
   },{});
 
-  // Question.associate = function(models) {
-  //   // associations can be defined here
-  //   Question.hasMany(models.Answers, {foreignKey: 'questionId'});
-  // };
+  Question.associate = function(models) {
+    // associations can be defined here
+    Question.hasMany(models.Answers, {foreignKey: 'questionId'});
+  };
   return Question;
 };
 

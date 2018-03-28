@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var Contact = sequelize.define('Contact', {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    where: DataTypes.STRING,
+    loc: DataTypes.STRING,
     age: DataTypes.INTEGER,
     build: DataTypes.STRING,
     gender: DataTypes.STRING,
@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
     hair: DataTypes.STRING,
     complexion: DataTypes.STRING, 
     clothing: DataTypes.TEXT,
-    personality: DataTypes.TEXT,
     notes: DataTypes.TEXT
   }, {});
    Contact.associate = function(models) {

@@ -29,5 +29,5 @@ VALUES ('textShort', '','name', 1),
 ('textLong', 'What did you talk about? An interesting story?', 'notes', 12);
 
 
-INSERT INTO Contacts(firstName, lastName, loc, notes);
+INSERT INTO Contacts(firstName, lastName, loc, notes)
 VALUES("Conner","McGregor", "Las Vegas", "This guys should stick to MMA");
