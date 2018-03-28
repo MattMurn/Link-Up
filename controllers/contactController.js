@@ -41,10 +41,7 @@ module.exports = function (app) {
             res.json(contactId);
         });
     });
-    //
-    // task.update({ title: 'foooo', description: 'baaaaaar'}, {fields: ['title']}).then(() => {
-    //     // title will now be 'foooo' but description is the very same as before
-    //    })
+
     app.put("/api/contacts/:id/:contactCol/:answer", function (req, res) {
         // Store answer from the request
         var answer = req.params.answer;

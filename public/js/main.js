@@ -1,13 +1,16 @@
 $(document).ready(function() {
     //click handlers for the homepage.
     
-    
+   function getId (){ 
     $.get("/api/login").then(function(data) {
-      
+      console.log("main.js connected");
     //this will allow the user id or any user information to persist to the homepage.  
-      console.log(data.email);
+      console.log(data.id);
+      return data.id;
     });
-    
+        
+    };
+    getId();
     $('#add-link').on('click', function(){
         console.log("add link");
         $.post(`./api/newcontact`).then(function(response){
@@ -18,7 +21,7 @@ $(document).ready(function() {
             }).catch(function(err) {
                 console.log(err);
               });
-        });
+        }); 
 
     });
 

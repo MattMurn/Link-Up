@@ -11,10 +11,11 @@ CREATE TABLE Users(
     PRIMARY KEY(id)
 );
 
-CREATE TABLE contacts(
+CREATE TABLE Contacts(
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NULL,
-    where VARCHAR(255) NULL,
+    firstName VARCHAR(255) NULL,
+    lastName VARCHAR(255) NULL,
+    loc VARCHAR(255) NULL,
     age INT NULL, 
     build VARCHAR(255) NULL,
     gender VARCHAR(255) NULL,

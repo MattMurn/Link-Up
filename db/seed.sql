@@ -27,3 +27,7 @@ VALUES ('textShort', '','name', 1),
 ('selectOne', 'blonde', 'hair', 10),('selectOne', 'white', 'hair', 10),
 ('textLong', 'How would you describe their clothing', 'clothing', 11),
 ('textLong', 'What did you talk about? An interesting story?', 'notes', 12);
+
+
+INSERT INTO Contacts(firstName, lastName, loc, notes);
+VALUES("Conner","McGregor", "Las Vegas", "This guys should stick to MMA");
