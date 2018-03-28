@@ -2,10 +2,6 @@ var db = require('../models');
 var passport = require('passport');
 module.exports = function (app) {
 
-// app.get("/login", function(req, res){
-//     res.render("login");
-//     console.log("linked");
-//   });
 
 
 app.post('/login', 
@@ -13,6 +9,6 @@ app.post('/login',
   function(req, res) {
     console.log('route hit');
 
-    // res.render('index');
+  //  res.render('homepage');
   });
 }

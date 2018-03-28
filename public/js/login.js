@@ -20,9 +20,9 @@ $(document).ready(function() {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
       };
-      console.log(userData.email);
-      console.log(userData.password);
-      console.log(window.location);
+      // console.log(userData.email);
+      // console.log(userData.password);
+      // console.log(window.location);
       
       if (!userData.email || !userData.password) {
         return;
@@ -40,10 +40,10 @@ $(document).ready(function() {
         email: email,
         password: password
       }).then(function(data) {
-        console.log(data);
+        // console.log(data);
         window.location.replace(data);
-        console.log(data);
-        // If there's an error, log the error
+        // console.log(data);
+        // // If there's an error, log the error
       }).catch(function(err) {
         console.log(err);
       });
