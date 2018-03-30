@@ -1,3 +1,5 @@
+
+
 // Function to get answers for any type of question from elements
 function submitAnswers() {
     // Get the number of possible answers for this page
@@ -5,7 +7,7 @@ function submitAnswers() {
     
     // Declare array for storing answers
     var answers = [];
-    
+    console.log(answers)
     // Get question type
     var questionType = $("#question-header-text").attr("question-type");
     
@@ -122,4 +124,4 @@ $(document).ready(function() {
         postAnswerToDatabase();
         window.location.href = `/homepage`
     });
-});
+}); 

@@ -2,7 +2,8 @@ var db = require("../models");
 
 
 module.exports = function (app) {
-
+// this route now handles getting all the questions and answers.
+// include: gets all associated answers put into an array.
     app.get("/api/addnew", function (req, res) {
         db.Question.findAll({
             include: {
@@ -38,6 +39,7 @@ module.exports = function (app) {
                 for (var i = 0; i < Answers.length; i++) {
                     answerArr.push(Answers[i].text);
                 }
+                console.log(answerArr)
                 // Create the object that handlebars needs to generate the form
                 var templateDataObj = {
                     id: question[0].id,

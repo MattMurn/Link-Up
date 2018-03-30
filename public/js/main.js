@@ -11,13 +11,15 @@ $(document).ready(function() {
         
     };
     getId();
+    var id = getId;
+    console.log(id);
     $('#add-link').on('click', function(){
         console.log("add link");
         $.post(`./api/newcontact`).then(function(response){
             // Store the contact ID so it can be used to post to database
             localStorage.setItem("contactId", response);
             $.get('/addnew/1').then(function(data){
-                window.location.href = `./addnew/1`;
+                window.location.href = `./addnew`;
             }).catch(function(err) {
                 console.log(err);
               });
@@ -33,10 +35,7 @@ $(document).ready(function() {
         
         }).catch(function(err){
             console.log(err);
-        })
+        })  
     })
 });
 
-$(document).ready(function() {
-
-  });

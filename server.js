@@ -60,7 +60,7 @@ require("./controllers/signupController.js")(app);
 require("./controllers/loginController.js")(app);
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
-// require("./controllers/testRoute.js")(app);
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

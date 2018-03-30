@@ -37,9 +37,14 @@ module.exports = function(app) {
 
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/homepage", isAuthenticated, function(req, res) {
+    
       res.render("homepage");
 
   });
+  // different html route to get homepage after authentication.
+  app.get("/homepage", function(req, res){
+    res.render("homepage");
+  })
   // testing this route to get questions and answers in 1 db query.
   app.get("/api/addNew", function(req, res){
     console.log("HTML ROUTE HIT");
