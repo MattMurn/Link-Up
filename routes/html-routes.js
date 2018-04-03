@@ -29,7 +29,7 @@ module.exports = function(app) {
     // If the user already has an account send them to the members page
     //this allows the userId to persist from login page to homepage. (see main.js for other side)
     if (req.user) {
-      res.json(req.user);
+      res.json({id: req.user.id});
     }
 
   });
@@ -46,7 +46,7 @@ module.exports = function(app) {
     res.render("homepage");
   })
   // testing this route to get questions and answers in 1 db query.
-  app.get("/api/addNew", function(req, res){
+  app.get("/api/addNew/:id", function(req, res){
     console.log("HTML ROUTE HIT");
     console.log(req);
   });

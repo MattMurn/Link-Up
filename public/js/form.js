@@ -46,7 +46,7 @@ function getAnswersSelect(i) {
         return answer;
     }
 }
-
+// this could work for each answer to push to 
 // Get answer(s) from userEntry template
 function getAnswersUserEntry(i) {
     var answer = $(`.answer-text[option-index=${i}]`).val();

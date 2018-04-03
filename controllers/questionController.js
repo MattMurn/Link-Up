@@ -4,11 +4,11 @@ var db = require("../models");
 module.exports = function (app) {
 // this route now handles getting all the questions and answers.
 // include: gets all associated answers put into an array.
-    app.get("/api/addnew", function (req, res) {
+    app.get("/api/addnew/:id", function (req, res) {
         db.Question.findAll({
-            include: {
-                model: db.Answers,
-            }
+            // include: {
+            //     model: db.Answers,
+            // }
         }).then(function (dataQ) {
             res.json(dataQ);
 
@@ -18,7 +18,7 @@ module.exports = function (app) {
     // HTML ROUTES
     app.get("/addnew/:questionId", function (req, res) {
         db.Question.findAll({
-            where: {
+            where: {    
                 id: req.params.questionId
             }
 

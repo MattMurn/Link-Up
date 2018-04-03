@@ -7,12 +7,18 @@
       <h1>{{question.title}}</h1>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12" id="question-header-text" question-type="{{question.type}}" question-id="{{question.id}}" contact-col="{{question.contactCol}}"
+      num-questions={{question.answers.length}}>
+      <h1>{{question.title}}</h1>
+    </div>
+  </div>
 
   {{!-- Populate the page with the appropriate template depending on the question type --}} {{!-- 4 types (check, selectOne,
   textShort, and textLong) --}}
 
 
-  <div class="row answer-thumbnails">
+  <div class="row answer-thumbnails" id="{{question.id}}">
     <div class="col-md-12" style="text-align: center; margin: 0 auto"></div>
     {{!-- Load select template with checkboxes --}} {{#ifCond question.type "selectOne"}} {{> addnew/select isCheckbox="yes" }} {{/ifCond}}
     {{!-- Load select template where only a single answer can be selected --}} {{#ifCond question.type "selectOne"}} {{>
@@ -32,6 +38,6 @@
   </div>
 </div>
 
-<script src="../../js/form.js"></script>
+
 <script src="../../js/main.js"></script>
 <script src="../../js/getAnswers.js"></script>
